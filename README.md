@@ -1,2 +1,4 @@
 # bimzty.github.io
-The projects that I have done during undergraduate
+This webpage stored the projects that I have done during my undergraduate
+
+1.
