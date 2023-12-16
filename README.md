@@ -17,7 +17,16 @@ Check the 'Identifying hotspots use WAP method' Rmd file.
 Check the 'Identifying hotspots using Clustering method' R file for finding hotspots. Firstly, this method performs Data Preprocessing to transform the spatial position('X','Y','Z') of residuals and VirusPercentage to the same scale[add more??????]. Secondly, this method examines the data distribution invariant before and after the process. Thirdly, the method uses K-means to cluster different residues. Fourthly, I perform the Permutation methods to examine the significance of mutation frequency for different clusters. Various hypothesis tests have been conducted in this step. We finally utilize T-SNE for dimensionality reduction and visualization.
 
 # 1.3 Applying the Gaussian process for capturing the mutational distribution of the protein.
-Check the 'Gaussian Process for mutation distribution' for  
+Check the 'Gaussian Process for mutation distribution'. Data processing here includes log transformation and Box-Cox transformation for 'Mutation Number'. I first implemented the basic GP method with the kernel function using Matern, a generalization of RBF, and using Random Search for the parameters in the kernel function. This basic model gives a tragic result. 
+
+I thus improved the model by following methods:
+1. Feature Engineering: I extracted more features from the original spatial positions ('X','Y','Z') and selected them. Feature extraction: from ('X','Y','Z') to (x','y','z','distance_to_center', 'sum_xyz','x^2', 'y^2', 'z^2', 'xy', 'xz', 'yz'). Feature attribution: SHAP (SHapley Additive explanations) and Permutation Importance measures are implemented. Feature selection: Correlation-based method, and SelectKBest Feature Selection were applied. I finally choose  ‘x’,’y’ ,'x^2',’ xy,,’xz’ and ‘‘distance to the center’ as my final features.
+   
+2. The Bayesian optimization method was also learned and replaced with the Random search method. (more detail being add...)
+ 
+3. Data Augmentation: As there is an obvious imbalanced distribution of mutations in the dataset, I applied SMOTE to solve the problem. The detailed program is at 'SMOTE for mutation distribution of the SPIKE protein '. I tried three approaches. No augmentation at all; 2. Augmentation on training set; 3. Augmentation on the entire set. We can see from the learning curve [picpicpicpic....] that only when augmenting on the entire dataset can we have dramatic improvement.
+  
+4. Regularization (more detail being add...)
 
 
 
