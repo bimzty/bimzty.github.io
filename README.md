@@ -46,12 +46,22 @@ I was mainly involved in delivering literature research related to Federated lea
 Data preprocessing: Transformation, cross-sectional standardization
 Feature Engineering: Feature Extraction: from a financial perspective (Bollinger Bands and waveform-based methods)
 Feature Attribution： Saliency, IG, and Shapely Value Sampling methods
-Feature Selection: Static and dynamic Feature Selection\
-
+Feature Selection: Static and dynamic Feature Selection
+Self-Attention Mechanism
 
 Check 'study attention mechanism from Google article' for relevant code I produced when learning the article 'Attention Is All You Need' by Ashish Vaswani et, al.
 
 
+ # 3. Internship: Mathematical modeling intern at ZHONGCE RUBBER GROUP CO., LTD.
+
+Design a program for the Hans B. Pacejka model, which is an empirical tire model based on experimental data.
+
+Hans B. Pacejka model: https://en.wikipedia.org/wiki/Hans_B._Pacejka
+
+The program code: 1. calculate the parameters for the model
+2. Draw a series of analytical graphs
+
+You can check the 'H.B.Pacejka model_Sample_GUI' MATLAB Figure program the alongside MATLAB GUI of the program. 
 
 
 
