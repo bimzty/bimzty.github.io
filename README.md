@@ -7,6 +7,7 @@ This research is expected to publish a research article
 
 # 1.Research for Spike protein on SARS-CoV-2 virus 
 
+Position: Data Analyst Intern
 Location: Shenzhen Bay Laboratory.
 tutor: Chaowang https://www.szbl.ac.cn/en/scientificresearch/researchteam/3372.html
 
@@ -54,6 +55,7 @@ Check 'study attention mechanism from Google article' for relevant code I produc
 
  # 3. Internship: Mathematical modeling intern at ZHONGCE RUBBER GROUP CO., LTD.
 
+Worked as a Mathematical Modelling intern
 Design a program for the Hans B. Pacejka model, which is an empirical tire model based on experimental data.
 
 Hans B. Pacejka model: https://en.wikipedia.org/wiki/Hans_B._Pacejka
@@ -63,7 +65,11 @@ The program code: 1. calculate the parameters for the model
 
 You can check the 'H.B.Pacejka model_Sample_GUI' MATLAB Figure program the alongside MATLAB GUI of the program. 
 
+# 4. Competition: Formula Student Electric, won National Third Prize
+Responsibility: Data Analyst and Simulation Technician
 
+1. Developed functions in Python for simulating car performance on the track (check '')
+2. Design genetic algorithms to optimize the design of chassis components (check '')
 
 
 
