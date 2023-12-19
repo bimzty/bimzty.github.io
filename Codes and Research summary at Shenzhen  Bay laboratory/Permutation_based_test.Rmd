@@ -1,0 +1,248 @@
+---
+title: "Permutation based test"
+author: "Taiyuan Zhang"
+date: "2023-07-20"
+output: html_document
+---
+
+#Load Library
+```{r cars, echo=FALSE, include=FALSE}
+library(sp)
+library(spgwr)
+#library(spdep)
+library(readxl)
+#library(spatialreg)
+library(gstat)
+library(stats)
+library(dbscan)
+library(cluster)
+library(ggplot2)
+library(scatterplot3d)
+library(rgl)
+library(mclust)
+library(plotly)
+library(dplyr)
+library(FNN)
+library(matrixStats)
+library(tidyr)
+library(scales)
+library(factoextra)
+library(spatstat)
+library(clValid)
+library(factoextra)
+library(fpc)
+library(NbClust)
+library(readxl)
+library(plot3D)
+library(DT)
+```
+
+
+## Load data
+
+Load data with spatial coordinates and mutation rates
+
+```{r, echo=FALSE}
+#data<-as.data.frame(read.csv("data1.csv"))
+
+data<-na.omit(data) 
+data_matrix<-as.matrix(data)
+data2<-data[1:972,c("X","Y","Z","virusPercent")]
+log_virus_percent <- log(data2$virusPercent)
+
+```
+
+#Normalisation
+
+```{r}
+
+#extarct data
+xyz<-data2[,c("X","Y","Z")]
+#standardization
+xyz_norm<-scale(xyz)
+feature_vector <- cbind(xyz_norm, data2$virusPercent)
+
+#change data2 to dataframe
+data2 <- data.frame(data2)
+
+```
+
+#Permutation based test
+
+```{r}
+k <- 122 # number of cluster
+n <- 1000 # number of permutation
+ite <- 25
+
+#means_all <- matrix(0, ncol=3, nrow=n)
+
+kmeans_res <- kmeans(feature_vector, centers=k, nstart=ite)
+
+result <- cbind(feature_vector,kmeans_res$cluster)
+
+colnames(result) <- c("X","Y","Z", "VP", "Cluster_Index")
+
+result <- data.frame(result)
+
+means <- data.frame()
+
+for (n in 1:k){
+  
+  # Select rows in 'result' data frame where 'Cluster_Index' equals 72
+  subset_result <- result[result$Cluster_Index == n, ]
+  
+  means <- rbind(means, c(n,sum(subset_result$VP)/nrow(subset_result))) 
+  
+}
+
+colnames(means) <- c("Cluster_Index","mean_VP")
+
+
+```
+
+```{r}
+
+Per_means <- data.frame(means[,1])
+
+colnames(Per_means) <- c("Cluster_Index")
+
+result_Per <- data.frame(result)
+
+for (i in 1:100000){
+  
+  result_Per$VP <- sample(result_Per$VP)
+  
+  # Create a new column in 'Per_means' for the current iteration
+  col_name <- paste("mean_", i, sep = "")
+  Per_means[, col_name] <- NA
+  
+  for (n in 1:k){
+  
+  # Select rows in 'result' data frame where 'Cluster_Index' equals 72
+  subset_result <- result_Per[result_Per$Cluster_Index == n, ]
+  
+  
+  # Compute mean and add to 'Per_means' data frame with column name
+  
+  Per_means[n, col_name] <- sum(subset_result$VP)/nrow(subset_result)
+  
+}
+  
+}
+
+
+
+
+
+```
+
+
+```{r}
+
+
+# Create a new column in 'means' for identifying the high_mutation point
+  col_name <- paste("Is_high")
+  means[, col_name] <- NA
+
+
+for (i in 1:k){
+  
+  # Compute the 95th percentile of the first row of 'Per_means'
+  top_5_percentile <- quantile(Per_means[i, ], probs = 0.95, na.rm = TRUE)
+
+  if (means[i,2] > top_5_percentile){
+    
+    means[i,3] <- 1
+    
+  }else{
+    
+    means[i,3] <- 0
+    
+  }
+  
+  
+}
+
+  
+  
+```
+
+```{r}
+# Select rows in 'means' where 'Is_high' is equal to 1
+high_mut <- means[means$Is_high == 1, ]
+
+# Print the selected rows
+print(high_mut)
+
+```
+
+Print the high mutation rate data points
+
+```{r}
+
+# Copy 'Cluster_Index' column from 'result' to 'data2'
+data2 <- cbind(data2, result$Cluster_Index)
+
+colnames(data2) <- c("X","Y","Z","virusPercent","Cluster_Index")
+
+# Create a new column in 'data2' for identifying the high_mutation point
+col_name <- paste("Is_high")
+data2[, col_name] <- NA
+
+# Create a new column 'Is_high' in 'data2'
+data2$Is_high <- ifelse(data2$Cluster_Index %in% high_mut$Cluster_Index, 1, 0)
+
+high_virus_data <- 0
+
+# Select rows of 'data2' where 'Is_high' is equal to 1
+high_virus_data <- data2[data2$Is_high == 1, ]
+
+# Print the selected rows
+print(high_virus_data)
+
+```
+
+```{r}
+# Sort 'high_virus_data' by 'Cluster_Index'
+high_virus_data <- high_virus_data[order(high_virus_data$Cluster_Index), ]
+
+# Print the sorted 'high_virus_data' data frame
+print(high_virus_data)
+```
+
+
+```{r}
+#High_mut_center: a datarame having the cluster_index and the center coordinate
+High_mut_center <- data.frame(matrix(nrow=nrow(high_mut), ncol=4))
+
+# Create a new column in 'High_mut_center' for identifying the high_mutation point
+colnames(High_mut_center) <- c("Cluster_Index","center_X","center_Y","center_Z")
+
+High_mut_center[,1] <- high_mut[,1]
+
+num <- 0
+for (i in unique(high_virus_data$Cluster_Index)){
+  num <- num+1
+  temp <- high_virus_data[high_virus_data$Cluster_Index == i, ]
+  
+  x <- temp$X
+  y <- temp$Y
+  z <- temp$Z
+  
+  # Calculate the center of the three sets of x, y, and z coordinates
+  center_X <- mean(x)
+  center_Y <- mean(y)
+  center_Z <- mean(z)
+  
+  print(center_X)
+  
+  High_mut_center[num,2] <- center_X
+  High_mut_center[num,3] <- center_Y
+  High_mut_center[num,4] <- center_Z
+  
+}
+
+# Print the center coordinates
+print(High_mut_center)
+```
+
