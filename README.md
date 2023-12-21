@@ -1,11 +1,12 @@
 # bimzty.github.io
 This webpage stores the projects that I have done during my undergraduate
-# Under way: I am evolving in the research aimed at 'Addressing Class Imbalance Issues in Financial Anti-Fraud Detection with Data Preprocessing and Machine Learning'.
+## Under way: 
+I am evolving in the research aimed at 'Addressing Class Imbalance Issues in Financial Anti-Fraud Detection with Data Preprocessing and Machine Learning'.
 Tutor：Boon Giin Lee https://research.nottingham.edu.cn/en/persons/boon-giin-lee
 This research is expected to publish a research article
 
 
-# 1.Research for Spike protein on SARS-CoV-2 virus 
+## 1.Research for Spike protein on SARS-CoV-2 virus 
 
 Position: Data Analyst Intern
 Location: Shenzhen Bay Laboratory.
@@ -13,16 +14,16 @@ tutor: Chaowang https://www.szbl.ac.cn/en/scientificresearch/researchteam/3372.h
 
 I was mainly involved in identifying mutational hotspots and capturing the mutation distribution using the Gaussian Process on the SARS-CoV-2 spike protein.
 
-# Background & Explain
+### Background & Explain
 Mutational Hotspots are the places on the protein where the mutation frequency is higher than in other places, they are the main consideration for designing experiments and vaccines. Furthermore, we would like to capture the regression patterns for this protein, for potential prediction task in future research.
 
-# 1.1 Applying a weighted average proximity scoring function for identifying hotspots
+### 1.1 Applying a weighted average proximity scoring function for identifying hotspots
 Check the 'Identifying hotspots use WAP method' Rmd file.
 
-# 1.2 Applying K-means or DBSCAN method for identifying hotspots
+### 1.2 Applying K-means or DBSCAN method for identifying hotspots
 Check the 'Identifying hotspots using Clustering method' R file for finding hotspots. Firstly, this method performs Data Preprocessing to transform the spatial position('X','Y','Z') of residuals and VirusPercentage to the same scale[add more??????]. Secondly, this method examines the data distribution invariant before and after the process. Thirdly, the method uses K-means to cluster different residues. Fourthly, I perform the Permutation methods to examine the significance of mutation frequency for different clusters. Various hypothesis tests have been conducted in this step. We finally utilize T-SNE for dimensionality reduction and visualization.
 
-# 1.3 Applying the Gaussian process for capturing the mutational distribution of the protein.
+### 1.3 Applying the Gaussian process for capturing the mutational distribution of the protein.
 Check the 'Gaussian Process for mutation distribution'. Data processing here includes log transformation and Box-Cox transformation for 'Mutation Number'. I first implemented the basic GP method with the kernel function using Matern, a generalization of RBF, and using Random Search for the parameters in the kernel function. This basic model gives a tragic result. 
 
 I thus improved the model by following methods:
