@@ -41,11 +41,11 @@ Tutor: Saeid Pourroostaei Ardakani  https://scholar.google.com/citations?user=3O
 
 I was mainly involved in delivering literature research related to Federated learning, implemented Feature Engineering, and built and compared multiple models in both tasks.
 
-### 2.1 Classification task for Freddie Mac loan dataset
+### 2.1 Classification task for Freddie Mac loan dataset 
 This research is conducted in a team, and I only demonstrate the program I wrote. Check 2.1 ’Report of Result’ for several results I conducted utilizing models built by myself or other team members.
 
 ## 2.2 Historical Stock Market Dataset
-Data preprocessing: Transformation, cross-sectional standardization <br> Feature Engineering: Feature Extraction: from a financial perspective (Bollinger Bands and waveform-based methods) <br> Feature Attribution：Saliency, IG, and Shapely Value Sampling Methods <br> Feature Selection: Static and dynamic Feature Selection Self-Attention Mechanism
+Data preprocessing: Transformation, cross-sectional standardization <br> Feature Engineering: Feature Extraction: from a financial perspective (Bollinger Bands and waveform-based methods) <br> Feature Attribution： Saliency, Integrated Gradients, and Shapely Value Sampling Methods <br> Feature Selection: Static and dynamic Feature Selection Self-Attention Mechanism<br> Model: LSTM and GRU; Also tried: Linear Regression; Decision Tree; Random Forest; <br> Explore: 1. Add Self-Attention Mechanism in LSTM and GRU model to improve long term memory; 2.Finding features from Neural Networks (using TSNE)
 
 Check 'study attention mechanism from Google article' for relevant code I produced when learning the article 'Attention Is All You Need' by Ashish Vaswani et, al.
 
