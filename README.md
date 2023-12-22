@@ -1,6 +1,9 @@
 This webpage stores the projects that I have done during my undergraduate
 ## About my self:
+CV: https://maipdf.com/est/a14080205457@pdf
 Academic Transcript (please note that my transcript has been updated in 12/2023): https://maipdf.com/est/a15151202453@pdf
+Certificate:
+Some photos:
 
 ## Underway: 
 I am evolving in the research aimed at 'Addressing Class Imbalance Issues in Financial Anti-Fraud Detection with Data Preprocessing and Machine Learning'.
