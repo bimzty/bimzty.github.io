@@ -1,6 +1,8 @@
-# bimzty.github.io
 This webpage stores the projects that I have done during my undergraduate
-## Under way: 
+## About my self:
+Academic Transcript (please note that my transcript has been updated in 12/2023): https://maipdf.com/est/a15151202453@pdf
+
+## Underway: 
 I am evolving in the research aimed at 'Addressing Class Imbalance Issues in Financial Anti-Fraud Detection with Data Preprocessing and Machine Learning'.
 Tutor：Boon Giin Lee https://research.nottingham.edu.cn/en/persons/boon-giin-lee
 This research is expected to publish a research article
@@ -15,7 +17,7 @@ tutor: Chaowang https://www.szbl.ac.cn/en/scientificresearch/researchteam/3372.h
 I was mainly involved in identifying mutational hotspots and capturing the mutation distribution using the Gaussian Process on the SARS-CoV-2 spike protein.
 
 ### Background & Explain
-Mutational Hotspots are the places on the protein where the mutation frequency is higher than in other places, they are the main consideration for designing experiments and vaccines. Furthermore, we would like to capture the regression patterns for this protein, for potential prediction task in future research.
+Mutational Hotspots are the places on the protein where the mutation frequency is higher than in other places, they are the main consideration for designing experiments and vaccines. Furthermore, we would like to capture the regression patterns for this protein, for potential prediction tasks in future research.
 
 ### 1.1 Applying a weighted average proximity scoring function for identifying hotspots
 Check the 'Identifying hotspots use WAP method' Rmd file.
