@@ -54,6 +54,7 @@ Data preprocessing: Transformation, cross-sectional standardization <br> Feature
 
 Check 'study attention mechanism from Google article' for relevant code I produced when learning the article 'Attention Is All You Need' by Ashish Vaswani et, al.
 
+This year, out of interest in Time Series and Quantitive Finance, I have systematically written a more systematic and true-to-life project for this task, which you can see in the folder 'A systematic approach for Quantitive Trading'. Instead of using a neural network, I emphasized the Support Vector Machine this time after being immersed in three related articles I included in that folder. I also utilized MovingAverageCrossStrategy (in '4_mac') for conducting strategy with event in the market being considered.
 
  # 3. Internship: Mathematical modeling intern at ZHONGCE RUBBER GROUP CO., LTD.
 
@@ -65,7 +66,7 @@ Hans B. Pacejka model: https://en.wikipedia.org/wiki/Hans_B._Pacejka
 The program code: 1. calculate the parameters for the model
 2. Draw a series of analytical graphs
 
-You can check the 'H.B.Pacejka model_Sample_GUI' MATLAB Figure program the alongside MATLAB GUI of the program. 
+You can check the 'H.B.Pacejka model_Sample_GUI' MATLAB Figure program alongside the MATLAB GUI of the program. 
 
 # 4. Competition: Formula Student Electric, won National Third Prize
 Responsibility: Data Analyst and Simulation Technician
