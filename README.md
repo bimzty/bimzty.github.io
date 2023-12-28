@@ -36,7 +36,7 @@ I thus improved the model by following methods:
    
 1.3.2. The Bayesian optimization method was also learned and replaced with the Random search method. (more detail being add...)
  
-1.3.3. Data Augmentation: As there is an obvious imbalanced distribution of mutations in the dataset, I applied SMOTE to solve the problem. The detailed program is at 'SMOTE for mutation distribution of the SPIKE protein '. I tried three approaches. No augmentation at all; 2. Augmentation on training set; 3. Augmentation on the entire set. We can see from the learning curve <img src="https://photos.google.com/photo/AF1QipN_fKfMFPEZbYRR7ed7mPclFMFQP06OGXpDL3sy " height="60" width="60" >that only when augmenting the entire dataset can we have dramatic improvement.
+1.3.3. Data Augmentation: As there is an obvious imbalanced distribution of mutations in the dataset, I applied SMOTE to solve the problem. The detailed program is at 'SMOTE for mutation distribution of the SPIKE protein '. <br>I tried three approaches. 1. No augmentation at all; 2. Augmentation on training set; 3. Augmentation on the entire set. We can see from the learning curve![Employee data]([http://imageurl](https://photos.google.com/photo/AF1QipN_fKfMFPEZbYRR7ed7mPclFMFQP06OGXpDL3sy) "Employee Data title") that only when augmenting the entire dataset can we have dramatic improvement.
 
 1.3.4 The original model has an overfitting problem. Best Parameterset for Regularization have been searched and applied.
   
