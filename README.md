@@ -13,8 +13,8 @@ This research is expected to publish a research article
 
 ## 1.Research for Spike protein on SARS-CoV-2 virus (07/2023-08/2023)
 
-Position: Data Analyst Intern
-Location: Shenzhen Bay Laboratory.
+Position: Data Analyst Intern <br>
+Location: Shenzhen Bay Laboratory. <br>
 tutor: Chaowang https://www.szbl.ac.cn/en/scientificresearch/researchteam/3372.html
 
 I was mainly involved in identifying mutational hotspots and capturing the mutation distribution using the Gaussian Process on the SARS-CoV-2 spike protein.
@@ -32,14 +32,14 @@ Check the 'Identifying hotspots using Clustering method' R file for finding hots
 Check the 'Gaussian Process for mutation distribution'. Data processing here includes log transformation and Box-Cox transformation for 'Mutation Number'. I first implemented the basic GP method with the kernel function using Matern, a generalization of RBF, and using Random Search for the parameters in the kernel function. This basic model gives a tragic result. 
 
 I thus improved the model by following methods:
-1.3.1. Feature Engineering: I extracted more features from the original spatial positions ('X','Y','Z') and selected them. Feature extraction: from ('X','Y','Z') to (x','y','z','distance_to_center', 'sum_xyz','x^2', 'y^2', 'z^2', 'xy', 'xz', 'yz'). Feature attribution: SHAP (SHapley Additive explanations) and Permutation Importance measures are implemented. Feature selection: Correlation-based method and SelectKBest Feature Selection were applied. I finally chose  ‘x’,’y’,'x^2',’ xy,,’xz’ and ‘‘distance to the center’ as my final features.
+1.3.1. Feature Engineering: I extracted more features from the original spatial positions ('X','Y','Z') and selected them. Feature extraction: from ('X','Y','Z') to (x',' y', 'z', 'distance_to_center', 'sum_xyz','x^2', 'y^2', 'z^2', 'xy', 'xz', 'yz'). Feature attribution: SHAP (SHapley Additive explanations) and Permutation Importance measures are implemented. Feature selection: Correlation-based method and SelectKBest Feature Selection were applied. I finally chose  ‘x’,’y’,'x^2',’ xy,,’xz’ and ‘‘distance to the center’ as my final features.
    
 1.3.2. The Bayesian optimization method was also learned and replaced with the Random search method. (more detail being add...)
  
-1.3.3. Data Augmentation: As there is an obvious imbalanced distribution of mutations in the dataset, I applied SMOTE to solve the problem. The detailed program is at 'SMOTE for mutation distribution of the SPIKE protein '. I tried three approaches. No augmentation at all; 2. Augmentation on training set; 3. Augmentation on the entire set. We can see from the learning curve [picpicpicpic....] that only when augmenting on the entire dataset can we have dramatic improvement.
-  
-1.3.4. Regularization (more detail being add...)
+1.3.3. Data Augmentation: As there is an obvious imbalanced distribution of mutations in the dataset, I applied SMOTE to solve the problem. The detailed program is at 'SMOTE for mutation distribution of the SPIKE protein '. I tried three approaches. No augmentation at all; 2. Augmentation on training set; 3. Augmentation on the entire set. We can see from the learning curve <img src="https://photos.google.com/photo/AF1QipN_fKfMFPEZbYRR7ed7mPclFMFQP06OGXpDL3sy " height="60" width="60" >that only when augmenting the entire dataset can we have dramatic improvement.
 
+1.3.4 The original model has an overfitting problem. Best Parameterset for Regularization have been searched and applied.
+  
 ## 2.Machine Learning Research: Classification task for Freddie Mac loan dataset and Historical Stock Market dataset(05/2022-08/2022, 09/2023)
 Location: University of Nottingham, Ningbo, china.
 Tutor: Saeid Pourroostaei Ardakani  https://scholar.google.com/citations?user=3OeHr8gAAAAJ
@@ -62,7 +62,7 @@ Worked as a Mathematical Modelling intern
 Design a program for the Hans B. Pacejka empirical tire model based on experimental data.
 
 Hans B. Pacejka model: https://en.wikipedia.org/wiki/Hans_B._Pacejka
-
+ <br>
 The program code: 1. calculate the parameters for the model
 2. Draw a series of analytical graphs
 
@@ -70,11 +70,11 @@ You can check the 'H.B.Pacejka model_Sample_GUI' MATLAB Figure program alongside
 
 ## 4. Competition: Formula Student Electric, won National Third Prize (12/2020-07/2022)
 Responsibility: Data Analyst and Simulation Technician
-The 'Track Simulation' folder consists of Python codes mainly developed to stimulate racecar performance on Track. It consists of functions for:<\br>
-Straight road (simulates and outputs the sol. of the car on straight road - acceleration only)
-Corner (simulates and outputs the sol. of the car on corners acceleration only, with the max velocity through a corner condition)
-Brake (simulates and outputs the sol. of the car on a straight road and corners deceleration)
-Solver (connects the 3 functions to output the overall solution)
+The 'Track Simulation' folder consists of Python codes mainly developed to stimulate racecar performance on Track. It consists of functions for: <br>
+Straight road, when the car accelerates only;<br>
+Corner, when the car runs the maximum speed under the condition;<br>
+Brake, when the car decelerates only;
+
 
 ## 5. Coursework during Undergraduate 
 ### 5.1 Coursework for the module Machine Learning (12/2023)
