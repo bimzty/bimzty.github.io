@@ -1,8 +1,8 @@
 This webpage stores the projects that I have done during my undergraduate
 ## About my self:
-CV: https://maipdf.com/est/a14080205457@pdf
-Academic Transcript (please note that my transcript has been updated in 12/2023): https://maipdf.com/est/a15151202453@pdf
-Certificate:
+CV: https://maipdf.com/est/a14080205457@pdf <br>
+Academic Transcript (please note that my transcript has been updated in 12/2023): https://maipdf.com/est/a15151202453@pdf <br>
+Certificate: <br>
 Some photos:
 
 ## Underway: 
@@ -59,7 +59,7 @@ This year, out of interest in Time Series and Quantitive Finance, I have systema
  ## 3. Internship: Mathematical modeling intern at ZHONGCE RUBBER GROUP CO., LTD.(06/2022-07/2022)
 
 Worked as a Mathematical Modelling intern
-Design a program for the Hans B. Pacejka model, which is an empirical tire model based on experimental data.
+Design a program for the Hans B. Pacejka empirical tire model based on experimental data.
 
 Hans B. Pacejka model: https://en.wikipedia.org/wiki/Hans_B._Pacejka
 
@@ -70,16 +70,18 @@ You can check the 'H.B.Pacejka model_Sample_GUI' MATLAB Figure program alongside
 
 ## 4. Competition: Formula Student Electric, won National Third Prize (12/2020-07/2022)
 Responsibility: Data Analyst and Simulation Technician
-
-1. Developed functions in Python for simulating car performance on the track (check '')
-2. Design genetic algorithms to optimize the design of chassis components (check '')
+The 'Track Simulation' folder consists of Python codes mainly developed to stimulate racecar performance on Track. It consists of functions for:<\br>
+Straight road (simulates and outputs the sol. of the car on straight road - acceleration only)
+Corner (simulates and outputs the sol. of the car on corners acceleration only, with the max velocity through a corner condition)
+Brake (simulates and outputs the sol. of the car on a straight road and corners deceleration)
+Solver (connects the 3 functions to output the overall solution)
 
 ## 5. Coursework during Undergraduate 
 ### 5.1 Coursework for the module Machine Learning (12/2023)
 The coursework aims to make use of the machine learning techniques learned in this course to diagnose breast cancer using the Wisconsin Diagnostic Breast Cancer (WDBC) dataset. Based on the recommended model and parameters of a similar competition held by Kaggle, I mainly built 7 models and conducted a systematic approach to choosing the best one from them. 
 
 ### 5.2 Coursework for the module Introduction to Scientific Computation
-This course aims to introduce the concept of numerical approximation to problems that cannot be solved analytically and to develop skills in Python through the implementation of numerical methods. Topics included in those works are: solving nonlinear equations (approximately) using root finding methods and analyzing their convergence; Solving linear systems of equations using direct methods, including Gaussian elimination; Solving linear systems of equations using iterative techniques, including Jacobi & Gauss-Seidel method; Approximating functions by polynomial interpolants (Lagrange polynomials), and analyzing their accuracy; Approximating derivatives and definite integrals using numerical differentiation and integration such as trapezoidal, Simpson & midpoint rule, and analyzing their convergence; Approximating ODEs using numerical methods including Euler’s method and s, higher-order RK methods.
+This course aims to introduce the concept of numerical approximation to problems that cannot be solved analytically and to develop skills in Python by implementing numerical methods. Topics included in those works are: Solving nonlinear equations (approximately) using root finding methods and analyzing their convergence; Solving linear systems of equations using direct methods and iterative techniques, including Gaussian elimination and Jacobi & Gauss-Seidel method; Approximating functions by polynomial interpolants (Lagrange polynomials), and analyzing their accuracy; Approximating derivatives and definite integrals using numerical differentiation and integration such as trapezoidal, Simpson & midpoint rule, and analyzing their convergence; Approximating ODEs using numerical methods including Euler’s method and s, higher-order RK methods.
 
 
 
