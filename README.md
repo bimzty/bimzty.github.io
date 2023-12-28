@@ -74,9 +74,12 @@ Responsibility: Data Analyst and Simulation Technician
 1. Developed functions in Python for simulating car performance on the track (check '')
 2. Design genetic algorithms to optimize the design of chassis components (check '')
 
-## 5. Coursework for the module Machine Learning (12/2023)
-The coursework aims to make use of the machine learning techniques learned in this course to diagnose breast cancer using the Wisconsin Diagnostic Breast Cancer (WDBC) dataset. Based on the recommended model and parameters of a similar competition held by Kaggle, I mainly built 7 models and conducted a systematic approach for choosing the best one from them. 
+## 5. Coursework during Undergraduate 
+### 5.1 Coursework for the module Machine Learning (12/2023)
+The coursework aims to make use of the machine learning techniques learned in this course to diagnose breast cancer using the Wisconsin Diagnostic Breast Cancer (WDBC) dataset. Based on the recommended model and parameters of a similar competition held by Kaggle, I mainly built 7 models and conducted a systematic approach to choosing the best one from them. 
 
+### 5.2 Coursework for the module Introduction to Scientific Computation
+This course aims to introduce the concept of numerical approximation to problems that cannot be solved analytically and to develop skills in Python through the implementation of numerical methods. Topics included in those works are: solving nonlinear equations (approximately) using root finding methods and analyzing their convergence; Solving linear systems of equations using direct methods, including Gaussian elimination; Solving linear systems of equations using iterative techniques, including Jacobi & Gauss-Seidel method; Approximating functions by polynomial interpolants (Lagrange polynomials), and analyzing their accuracy; Approximating derivatives and definite integrals using numerical differentiation and integration such as trapezoidal, Simpson & midpoint rule, and analyzing their convergence; Approximating ODEs using numerical methods including Euler’s method and s, higher-order RK methods.
 
 
 
