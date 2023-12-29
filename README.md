@@ -2,12 +2,12 @@ This webpage stores the projects that I have done during my undergraduate
 ## About my self:
 CV: https://maipdf.com/est/a14080205457@pdf <br>
 Academic Transcript (please note that my transcript has been updated in 12/2023): https://maipdf.com/est/a15151202453@pdf <br>
-Certificate: <br>
+Certificate: https://maipdf.com/est/d19910289981@pdf <br>
 Some photos:
 
 ## Underway: 
-I am evolving in the research aimed at 'Addressing Class Imbalance Issues in Financial Anti-Fraud Detection with Data Preprocessing and Machine Learning'.
-Tutor：Boon Giin Lee https://research.nottingham.edu.cn/en/persons/boon-giin-lee
+I am evolving in the research aimed at 'Addressing Class Imbalance Issues in Financial Anti-Fraud Detection with Data Preprocessing and Machine Learning'.<br>
+Tutor：Boon Giin Lee https://research.nottingham.edu.cn/en/persons/boon-giin-lee<br>
 This research is expected to publish a research article
 
 
@@ -23,7 +23,7 @@ I was mainly involved in identifying mutational hotspots and capturing the mutat
 Mutational Hotspots are the places on the protein where the mutation frequency is higher than in other places, they are the main consideration for designing experiments and vaccines. Furthermore, we would like to capture the regression patterns for this protein, for potential prediction tasks in future research.
 
 ### 1.1 Applying a weighted average proximity scoring function for identifying hotspots
-Check the 'Identifying hotspots use WAP method' Rmd file. The idea of the method is from Comprehensive assessment of cancer missense mutation clustering in protein structures by Atanas Kamburov et, al. The {WAP pic} from this article is first used for identifying clusters that are significant for mutation. I furthermore improve the methods by adding an adaptive step for finding the optimal size of each cluster before the original process.
+Check the 'Identifying hotspots use WAP method' Rmd file. The idea of the method is from a Comprehensive assessment of cancer missense mutation clustering in protein structures by Atanas Kamburov et, al. The {WAP pic} from this article is first used for identifying clusters that are significant for mutation. I furthermore improve the methods by adding an adaptive step for finding the optimal size of each cluster before the original process.
 
 ### 1.2 Applying K-means or DBSCAN method for identifying hotspots
 Check the 'Identifying hotspots using Clustering method' R file for finding hotspots. Firstly, this method performs Data Preprocessing to transform the spatial position('X',' Y',' Z') of residuals and VirusPercentage to the same scale<br> Secondly, this method examines the data distribution invariant before and after the process. <br>Thirdly, the method uses K-means to cluster different residues. <br>Fourthly, I perform the Permutation methods to examine the significance of mutation frequency for different clusters. <br>Various hypothesis tests have been conducted in this step. We finally utilize T-SNE for dimensionality reduction and visualization.
