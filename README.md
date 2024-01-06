@@ -84,6 +84,12 @@ The coursework aims to make use of the machine learning techniques learned in th
 ### 5.2 Coursework for the module Introduction to Scientific Computation
 This course aims to introduce the concept of numerical approximation to problems that cannot be solved analytically and to develop skills in Python by implementing numerical methods. Topics included in those works are: Solving nonlinear equations (approximately) using root finding methods and analyzing their convergence; Solving linear systems of equations using direct methods and iterative techniques, including Gaussian elimination and Jacobi & Gauss-Seidel method; Approximating functions by polynomial interpolants (Lagrange polynomials), and analyzing their accuracy; Approximating derivatives and definite integrals using numerical differentiation and integration such as trapezoidal, Simpson & midpoint rule, and analyzing their convergence; Approximating ODEs using numerical methods including Euler’s method and s, higher-order RK methods.
 
+### 5.3 Coursework for the module Statistical Models and Methods
+The objective of the coursework is to build a predictive model for body fat content using 10 body measurement variables. we first do some exploratory analysis of the data. Secondly, we do model selection to find the best subset of variables for regression based on AIC/BIC, Mallow’s Cp, and Adjusted
+R-squared criterion. Thirdly, we identify and analyze outliers and high-leverage points. Fourthly, we check the linear
+model assumption by plotting the QQ-plot, residual, component residual plot, etc, and do the manipulation to a model
+based on that. A comparison between our best model and the full model using test data will also be provided.
+
 
 
 
