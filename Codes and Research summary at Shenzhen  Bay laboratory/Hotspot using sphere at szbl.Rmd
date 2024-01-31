@@ -1,0 +1,699 @@
+---
+title: "Taiyuan Zhang_Identifying hotspots at szbl"
+author: "Taiyuan Zhang"
+date: "2023-08-30"
+output: html_document
+---
+
+```{r} 
+#data I use here is '6vxx_variants.xls' 
+library(data.table)
+print(any(!is.numeric(data$x))) 
+print(any(!is.numeric(data$y)))
+print(any(!is.numeric(data$z)))
+nrow(data)
+# Convert the x column to numeric, replacing non-numeric values with NA
+x <- ifelse(is.na(as.numeric(data$x)), NA, as.numeric(data$x))
+# Check the data types of the x, y, and z columns
+class(data$x)
+class(data$y)
+class(data$z)
+data$index<-1:nrow(data)
+print(data)
+```
+
+Method one:
+Imitate from the article: 
+Comprehensive assessment of cancer missense mutation clustering in protein structures
+```{r}
+# Define a vector of radii
+radii <- c(5)
+
+# Initialize an empty list to store the sums1 vectors for each radius
+sums1_list <- list()
+num_in_sphere_list <- list()
+
+# Loop through each radius and calculate the sum of num values for the points within the sphere
+for (r in radii) {
+  # Initialize an empty vector to store the sum of num values for each sphere
+  sums1 <- c()
+  indices_within_sphere_list <- c()
+  
+  # Initialize an empty vector to store the number of points within each sphere
+  num_in_sphere <- numeric(nrow(data))
+  
+  # Loop through each point and calculate the sum of num values for the points within the sphere
+  for (i in 1:nrow(data)) {
+    # Define the center of the sphere
+    center <- unlist(data[i, c("x", "y", "z", "num")])
+    
+    # Convert the x, y, and z variables to numeric
+    x <- ifelse(is.na(as.numeric(data$x)), NA, as.numeric(data$x))
+    y <- ifelse(is.na(as.numeric(data$y)), NA, as.numeric(data$y))
+    z <- ifelse(is.na(as.numeric(data$z)), NA, as.numeric(data$z))
+    num <- ifelse(is.na(as.numeric(data$num)), NA, as.numeric(data$num))
+    
+    # Calculate the Euclidean distance between each point and the center
+    distances <- sqrt((x - center[1])^2 + (y - center[2])^2 + (z - center[3])^2)
+    
+    # Subset the data to only include points within the sphere
+    subset_data <- data[distances <= r, ]
+    indices_within_sphere <- which(distances <= r)
+  
+    # Add the indices of points within the current sphere to the list
+    indices_within_sphere_list[[i]] <- indices_within_sphere
+    # Get the indices of points within the current sphere
+    indices_within_sphere <- which(distances <= r)
+    
+    # Add the indices of points within the current sphere to the list
+    indices_within_sphere_list[[i]] <- indices_within_sphere
+    
+    # Calculate the sum of num values for the points within the sphere
+    sum_num <- sum(subset_data$num)
+    
+    # Calculate the WAP score for the points within the sphere
+    # define sigmoid1 function
+    sigmoid1 <- function(Nq, m, theta) {
+      return(Nq^m / (theta^m + Nq^m))
+    }
+    
+    # define sigmoid2 function
+    sigmoid2 <- function(Nr, m, theta) {
+      return(Nr^m / (theta^m + Nr^m))
+    }
+    
+    Nr <- num
+    
+    nq <- sigmoid1(center[4], 2, 3)
+    nr <- sigmoid2(Nr, 2, 3)
+    t <- 6
+    WAP_score <- sum(nq * nr * exp(-(distances^2)/(2*t^2)))
+    
+    # Add the number of points within the sphere to the vector of counts
+    num_in_sphere[i] <- nrow(subset_data)
+    
+    # Add the sum to the vector of sums
+    sums1 <- c(sums1, WAP_score)
+  }
+  
+  # Add the sums1 vector to the list for the current radius
+  sums1_list[[as.character(r)]] <- sums1
+  
+  # Print the mean of num_in_sphere for the current radius
+  cat("Mean number of points within sphere (radius =", r, "):", mean(num_in_sphere), "\n\n")
+  
+  # Add the num_in_sphere vector to the list for the current radius
+  num_in_sphere_list[[as.character(r)]] <- num_in_sphere
+}
+
+# Print the list of sums1 vectors for each radius
+print(sums1_list)
+print(num_in_sphere_list)
+
+#ave WAP
+class(sums1_list)
+class(num_in_sphere_list)
+#fixed r=5
+sum1 <- sums1_list
+num1 <- num_in_sphere_list
+
+quotients <- unlist(sum1) / unlist(num1)
+ave_WAP <- data.frame(sum1 = unlist(sum1), num1 = unlist(num1), quotient = quotients)
+
+ave_WAP$index <- 1:nrow(ave_WAP)
+ave_WAP <- ave_WAP[, c("index", "sum1", "num1", "quotient")]
+
+print(ave_WAP)
+```
+
+Here is a toy model for sphere selection which only based on the average WAP score
+'Permutation based test' is in a separate files
+
+```{r}
+#Select the top 30% balls
+n_rows <- ceiling(nrow(ave_WAP) * 0.03)
+
+top_rows <- head(ave_WAP[order(-ave_WAP$quotient), ], n = n_rows)
+
+# output
+print(top_rows)
+
+selected_lists <- lapply(num_in_sphere_list, function(x) all(top_rows$index %in% x))
+
+#index in original dataset
+grouped_lists <- split(indices_within_sphere_list, selected_lists)
+#print(grouped_lists)
+print(top_rows$index)
+class(top_rows$index)
+
+
+```
+
+result of the method following the article
+
+```{r}
+# Install and load the rgl package if not already installed
+if (!require("rgl")) {
+  install.packages("rgl")
+}
+library("rgl")
+
+# Convert x, y, and z columns to numeric if needed
+data$x <- as.numeric(data$x)
+data$y <- as.numeric(data$y)
+data$z <- as.numeric(data$z)
+
+# Create a new 3D scatter plot
+plot3d(data$x, data$y, data$z, type = "n", xlab = "X", ylab = "Y", zlab = "Z")
+points3d(data$x, data$y, data$z, col = "green", size = 5)
+
+# Get the indices of top_rows in data
+indices <- match(top_rows$index, data$index)
+
+# Add top_rows data to the plot as red spheres
+points3d(data$x[indices], data$y[indices], data$z[indices], col = "red", size = 10)
+
+# Add a legend
+legend3d("topright", legend = c("Data", "Top Rows"), col = c("green", "red"), pch = 16, size = 1)
+```
+
+Method two is improved from method one
+
+```{r}
+#index
+indices <- c(top_rows$index) 
+result_one <- list() # list for install results
+for (i in indices) {
+  sublist <- indices_within_sphere_list[[i]]  
+  result_one[[as.character(i)]] <- sublist  
+}
+print(result_one)
+
+#Count the cases where these balls intersect
+common_indices <- list()
+
+# Iterate over each element in the result one list
+for (i in seq_along(result_one)) {
+  for (j in seq_along(result_one)) {
+    if (i == j) {
+      next   
+    }
+    
+    if (length(intersect(result_one[[i]], result_one[[j]])) > 0) {
+      common_indices[[length(common_indices) + 1]] <- c(i, j)
+    }
+  }
+}
+
+# output the element that have same index
+if (length(common_indices) > 0) {
+  cat("same index：\n")
+  print(common_indices)
+} else {
+  cat("different index : \n")
+}
+ 
+```
+
+cluster according to intersection. All inetersect balls are counted in a cluster
+
+```{r}
+# 创建一个空的列表，用于存储每个类别的索引
+class_indices <- list()
+
+# 遍历result_one列表中的每一个元素
+for (i in seq_along(result_one)) {
+  # 创建一个标志，指示索引是否已经被分配到某个类别中
+  assigned <- FALSE
+  
+  # 遍历每个类别，检查当前索引是否与类别中的任何索引相同
+  for (j in seq_along(class_indices)) {
+    if (length(intersect(result_one[[i]], result_one[[unlist(class_indices[[j]])[1]]])) > 0) {
+      # 如果当前索引与类别中的任何索引相同，则将其添加到该类别中
+      class_indices[[j]] <- c(class_indices[[j]], i)
+      assigned <- TRUE
+      break
+    }
+  }
+  
+  # 如果当前索引没有被分配到任何类别中，则创建一个新的类别
+  if (!assigned) {
+    class_indices[[length(class_indices) + 1]] <- list(i)
+  }
+}
+
+# 创建一个空的字典，用于存储每个类别的点
+index_cluster <- list()
+
+# 输出每个类别的索引和具体点
+for (i in seq_along(class_indices)) {
+  indices <- unlist(class_indices[[i]])
+  elements <- unique(unlist(result_one[indices]))
+  index_cluster[[as.character(i)]] <- elements
+
+  # 输出每个类别的具体点
+  #cat(paste0("点: ", paste(elements, collapse = " "), "\n\n"))
+}
+
+
+# 输出index_cluster字典
+cat("index_cluster:\n")
+print(index_cluster)
+#统计这23个cluster中所含的所有点
+```
+```{r}
+#统计这些类中VN大于8000的点的数量
+# 创建一个空向量来存储大于8000的行的索引
+above_8000_indices <- c()
+
+# 创建一个空字典来存储满足条件的点
+high_index_cluster <- list()
+
+# 以类为单位遍历每个类别
+for (i in seq_along(index_cluster)) {
+  indices <- unlist(index_cluster[[i]])
+  cat(paste0("类", i, ":"))
+
+  # 在数据集中获取每个类中相应的行
+  rows <- data[indices,]
+  
+  # 获取大于8000的行的索引
+  above_8000_indices_class <- indices[rows$num > 8000]
+  
+  # 将当前类中大于8000的行的索引添加到总索引向量中
+  above_8000_indices <- c(above_8000_indices, above_8000_indices_class)
+  
+  # 将满足条件的点添加到字典中
+  high_index_cluster[[as.character(i)]] <- above_8000_indices_class
+  
+  # 输出每个类中num列大于8000的数量及其索引
+  cat(paste0(" ", length(above_8000_indices_class), "\n"))
+  cat(paste0("索引: ", paste0(above_8000_indices_class, collapse = ", "), "\n"))
+}
+
+# 输出总共大于8000的行的索引
+cat(paste0("总共大于8000的行的索引: ", paste0(above_8000_indices, collapse = ", "), "\n"))
+print(high_index_cluster)
+```
+
+```{r}
+# 提取相应位置的内容到area3、area2、area1
+area3 <- index_cluster[["9"]]
+area3 <- data[area3,]
+
+area2 <- unlist(c())
+area2 <- data[area2,]
+
+area1 <- unlist(c(index_cluster[["4"]], index_cluster[["7"]], index_cluster[["15"]], index_cluster[["17"]], index_cluster[["18"]]))
+area1 <- data[area1,]
+
+# 输出area3
+cat("area3:\n")
+print(area3)
+
+# 输出area2
+cat("area2:\n")
+print(area2)
+
+# 输出area1
+cat("area1:\n")
+print(area1)
+```
+
+```{r}
+library(rgl)
+
+# Set the viewpoint to 45 degrees
+rgl.viewpoint(theta = 45, phi = 30, zoom = 0.8)
+
+# Plot the points in 3D
+plot3d(data$x, data$y, data$z, col="green", size=10) 
+points3d(area3$x, area3$y, area3$z, col="red", size=15)
+points3d(area2$x, area2$y, area2$z, col="purple", size=15)
+points3d(area1$x, area1$y, area1$z, col="blue", size=15)
+
+# Set the viewpoint to 90 degrees
+rgl.viewpoint(theta = 90, phi = 30, zoom = 0.8)
+# ... repeat the plot commands ...
+
+# Set the viewpoint to 135 degrees
+rgl.viewpoint(theta = 135, phi = 30, zoom = 0.8)
+# ... repeat the plot commands ...
+
+# Set the viewpoint to 180 degrees
+rgl.viewpoint(theta = 180, phi = 30, zoom = 0.8)
+# ... repeat the plot commands ...
+
+#P.S: 为了显示效果，size=80并不代表r=5
+```
+```{r}
+#permutation test to test the significant of the selected area
+# 输出 area1 的索引
+print(area1$index)
+
+# 设置随机排列的次数
+n_permutations <- 20
+
+# 保存随机排列后的和的值
+sums <- numeric(n_permutations)
+
+# 对 num 列进行随机排列，并计算每次排列后的和
+for (i in 1:n_permutations) {
+  # 对 data 的 num 列进行随机排列
+  permuted_num <- sample(data$num, replace = TRUE)
+  
+  # 用随机排列后的 num 列替换原始数据中的 num 列
+  data_permuted <- data
+  data_permuted$num <- permuted_num
+  
+  # 提取 area1、area2 和 area3 对应的行
+  area1_permuted <- data_permuted[area1$index,]
+  area2_permuted <- data_permuted[area2$index,]
+  area3_permuted <- data_permuted[area3$index,]
+  
+  # 计算新的和
+  sum2_permuted <- sum(area1_permuted$num + area2_permuted$num + area3_permuted$num)
+  
+  # 保存和的值
+  sums[i] <- sum2_permuted
+}
+
+# 计算90%至100%大的和的值
+sorted_sums <- sort(sums, decreasing = TRUE)
+lower_index <- round(n_permutations * 0.1)
+
+lower_bound <- sorted_sums[lower_index]
+if (length(sorted_sums) %% lower_index != 0) {
+  n_add <- lower_index - length(sorted_sums) %% lower_index
+  sorted_sums <- c(sorted_sums, rep(0, n_add))
+}
+
+# 输出结果
+cat("90%的值为：", lower_bound, "\n")
+sum1 <- sum(area3$num + area2$num + area1$num)
+cat("实际值为：", sum1, "\n")
+```
+
+
+方法3：通过贪婪算法自动调整半径的大小（3-10）,之后cluster保持不变
+(暂时没有跑过，计算时间太长)
+```{r}
+# 定义sigmoid1函数
+sigmoid1 <- function(Nq, m, theta) {
+  return(Nq^m / (theta^m + Nq^m))
+}
+
+# 定义sigmoid2函数
+sigmoid2 <- function(Nr, m, theta) {
+  return(Nr^m / (theta^m + Nr^m))
+}
+
+# 定义WAP计算函数
+calculate_wap <- function(center, distances, num) {
+  Nr <- num
+  nq <- sigmoid1(center[4], 2, 3)
+  nr <- sigmoid2(Nr, 2, 3)
+  t <- 6
+  WAP_score <- sum(nq * nr * exp(-(distances^2)/(2*t^2)))
+  return(WAP_score)
+}
+
+# 初始化变量
+max_wap <- 0
+best_center <- NULL
+best_radius <- 0
+ave_WAP <- 0
+
+# 存储每个球的半径和平均WAP值
+radius_list <- c()
+ave_wap_list <- c()
+
+# 遍历每个点
+for (i in 1:nrow(data)) {
+  center <- data[i,]
+  wap_sum_list <- c()  # 存储每个半径下的WAP值之和
+  
+  # 确定半径范围
+  for (radius in 3:10) {
+    wap_sum <- 0
+    
+    # 遍历邻近点
+    for (j in 1:nrow(data)) {
+      if (j == i) next  # 排除当前点
+      
+      # 计算距离
+      distances <- sqrt((x - center[1])^2 + (y - center[2])^2 + (z - center[3])^2)
+      
+      # 计算WAP值
+      wap <- calculate_wap(center, distance, data[j, 3])
+      
+      # 累加WAP值
+      wap_sum <- wap_sum + wap
+    }
+    
+    # 存储WAP值之和
+    wap_sum_list <- c(wap_sum_list, wap_sum)
+  }
+  
+  # 存储半径和对应的平均WAP值
+  radius_list <- c(radius_list, 3:10)
+  ave_wap_list <- c(ave_wap_list, max(wap_sum_list) / length(wap_sum_list))
+}
+
+# 输出结果
+print(paste("Number of balls:", nrow(data)))
+print(paste("Number of radii:", length(radius_list)))
+print(paste("Number of average WAP values:", length(ave_wap_list)))
+```
+ 
+
+方法4：以高频点为中心，用RF算法分割高频点周围空间
+```{r}
+# 计算num列的第10个百分位数
+threshold <- quantile(data$num, 0.1)
+
+# 选出num列小于等于阈值的行
+selected_rows <- data[data$num <= threshold, ]
+print(selected_rows)
+```
+高频点为center+周围每对点WAP统计
+用RF方法对区域进行划分(目前结果有问题，显示null)
+计划：根据每对点的WAP值大小用RF算法进行划分区域
+问题来源应该是nr,nq（nr来源与10%高频点，np来源与90%低频点，即是data中除去selected_rows的其他点），现在输入不对，全部都从nr中输入了
+```{r}
+# 计算nq和nr
+nq <- sigmoid(selected_rows$num, 2, 3)
+nr <- sigmoid(data[!rownames(data) %in% rownames(selected_rows), ]$num, 2, 3)
+
+# 将nq和nr添加到selected_rows数据框中
+selected_rows$nq <- nq
+selected_rows$nr <- rep(nr, length.out = nrow(selected_rows))
+
+# 计算WAP值
+calculate_wap <- function(nq, nr, distance, t) {
+  return(nq * nr * exp(-(distance^2) / (2 * t^2)))
+}
+
+# 计算每对点的WAP值
+selected_rows$WAP_score <- 0
+for (i in 1:nrow(selected_rows)) {
+  distance <- sqrt((selected_rows$x[i] - data$x)^2 + 
+                   (selected_rows$y[i] - data$y)^2 +
+                   (selected_rows$z[i] - data$z)^2)
+  wap_values <- calculate_wap(selected_rows$nq[i], data$nr[i], distance, t)
+  selected_rows$WAP_score[i] <- sum(wap_values)
+}
+```
+
+这里需要按照WAP值对周围的点划分到四个区
+
+现在计算完了每对点的WAP值，按照这个值将非高频区的点分到num_group的1，2，3，4组
+
+算法可以跑，但是返回空值
+
+计划按照num_group用RF划分区域
+```{r}
+library(randomForest)
+
+# 使用RF模型将其他点分为4组
+rf_model <- randomForest(num_group ~ x + y + z, data = points_RF, ntree = 100)
+
+# 预测其他点的分类
+other_points <- data[!rownames(data) %in% rownames(selected_rows), ]
+other_points$group <- predict(rf_model, newdata = other_points)
+
+# 将其他点添加到high_frequency_area数据框中
+high_frequency_area <- rbind(high_frequency_area, other_points)
+
+# 按照WAP从高到低对区域进行划分
+high_frequency_area <- high_frequency_area[order(high_frequency_area$WAP_score, decreasing = TRUE), ]
+num_areas <- 4
+area_size <- nrow(high_frequency_area) / num_areas
+high_frequency_area$Area <- rep(1:num_areas, each = area_size, length.out = nrow(high_frequency_area))
+
+# 输出结果
+print(high_frequency_area)
+
+```
+
+如果RF可以讲其他点分为4组，那么可以继续、用SVM方法进行画图（不是为了分点，只是为了划分区域，可以跳过）
+```{r}
+#step six SVM one
+# 将x、y、z作为特征变量，num_group作为分类变量
+features <- points_SVM[, 1:3]
+labels <- points_SVM$num_group
+
+# 将数据集分为训练集和测试集
+set.seed(123)
+train_index <- sample(1:nrow(points_SVM), size = round(0.7 * nrow(points_SVM)), replace = FALSE)
+train_set <- points_SVM[train_index, ]
+test_set <- points_SVM[-train_index, ]
+
+# 训练SVM模型，并调整参数
+svm_model <- svm(num_group ~ x + y + z, data = train_set, type = "C-classification", kernel = "polynomial", degree = 3, cost = 3)
+
+# 在测试集上进行预测
+test_pred <- predict(svm_model, test_set)
+
+# 计算预测准确率
+accuracy <- sum(test_pred == test_set$num_group) / nrow(test_set)
+print(paste("Accuracy:", accuracy))
+```
+
+画图
+
+```{r}
+# 进行主成分分析
+pca <- prcomp(train_set[, c("x", "y", "z")], center = TRUE, scale. = TRUE)
+
+# 提取前3个主成分
+train_set_pca <- data.frame(pca$x[, 1:3], num_group = train_set$num_group)
+
+# 指定每个族别的颜色
+colors <- ifelse(train_set_pca$num_group == 1, "green", 
+                  ifelse(train_set_pca$num_group == 2, "yellow", 
+                         ifelse(train_set_pca$num_group == 3, "orange",
+                                ifelse(train_set_pca$num_group == 4, "red", "blue"))))
+
+# 绘制点云图
+plot3d(train_set_pca$PC1, train_set_pca$PC2, train_set_pca$PC3, col = colors, size = 20)
+
+# 绘制SVM分类器的超平面
+planes3d(svm_model$coefs[1], svm_model$coefs[2], svm_model$coefs[3], svm_model$coefs[4], alpha = 0.5, col = "black")
+
+# 在超平面后面绘制背景
+bg3d(texture = NULL, color = "white", lit = FALSE)
+
+# 调整超平面的透明度
+material3d(type = "shiny", alpha = 0.5)
+
+# 设置视角和旋转图形
+view3d(theta = -30, phi = 30, zoom = 0.7)
+```
+ 
+permutation test证明选出空间的显著性
+```{r}
+#step six permutation test three (permutation)
+
+# 设置随机排列的次数
+actual_sum<- sum( points_SVM_4$num+points_SVM_5$num)
+n_permutations <- 500
+
+# 保存随机排列后的和的值
+sums <- numeric(n_permutations)
+
+# 对num列进行随机排列，并计算每次排列后的和
+for (i in 1:n_permutations) {
+  # 对data的num列进行随机排列
+  permuted_num <- sample(data$num, replace=TRUE)
+  
+  # 用随机排列后的num列替换points_SVM_4的num列
+  n_rows <- nrow(points_SVM_4)
+  original_row_number <- 1:n_rows
+  permuted_row_number <- sample(original_row_number)
+  permuted_points_SVM_4 <- points_SVM_4
+  permuted_points_SVM_4$num <- permuted_num[permuted_row_number]
+  
+  n_rows <- nrow(points_SVM_5)
+  original_row_number <- 1:n_rows
+  permuted_row_number <- sample(original_row_number)
+  permuted_points_SVM_5 <- points_SVM_5
+  permuted_points_SVM_5$num <- permuted_num[permuted_row_number]
+  # 计算新的num列的和
+  sums[i] <- sum(permuted_points_SVM_4$num+permuted_points_SVM_5$num)
+}
+
+# 计算95%至100%大的和的值
+sorted_sums <- sort(sums, decreasing=TRUE)
+lower_index <- round(n_permutations*0.05)
+
+lower_bound <- sorted_sums[lower_index]
+print(permuted_points_SVM_4)
+# 输出结果
+cat("95%的值为：", lower_bound,  "\n")
+cat("points_SVM_4和的值为：", actual_sum)
+```
+
+
+额外分析：long-term correlation
+统计三维坐标距离在10以内，但是序列差距大于200的点,且两个点都大于8000的点
+
+```{r}
+# Create empty arrays for low-frequency and high-frequency points
+low_array <- c()
+high_array <- c()
+
+# Create an empty vector to store the indices of points that are close in coordinates but far in index
+close_far_indices <- c()
+
+# Iterate through each pair of points in the dataset
+for (i in 1:(nrow(data) - 1)) {
+  for (j in (i + 1):nrow(data)) {
+    # Calculate the distance between the two points in coordinates
+    distance <- sqrt((data[i, "x"] - data[j, "x"])^2 + (data[i, "y"] - data[j, "y"])^2) 
+
+    # Check if the coordinate distance is close (e.g., less than a threshold, adjust as needed)
+    if (distance < 10) {
+      # Check if both indices are far (e.g., greater than a threshold, adjust as needed)
+      if (abs(data[i, "index"] - data[j, "index"]) > 200 && data[i, "num"] > 8000 && data[j, "num"] > 8000) {
+        # Store the indices of points that satisfy the criteria
+        close_far_indices <- c(close_far_indices, data[i, "index"], data[j, "index"])
+        
+        # Determine the low-frequency and high-frequency points and store their indices
+        if (data[i, "num"] < data[j, "num"]) {
+          low_array <- c(low_array, data[i, "index"])
+          high_array <- c(high_array, data[j, "index"])
+        } else {
+          low_array <- c(low_array, data[j, "index"])
+          high_array <- c(high_array, data[i, "index"])
+        }
+      }
+    }
+  }
+}
+
+# Print the indices of points that satisfy the criteria
+cat("Indices of points that satisfy the criteria: ", close_far_indices, "\n")
+```
+画图
+```{r}
+#graph drawing
+# 整理低频点数组并去除重复元素
+low_array <- unique(low_array)
+
+# 整理高频点数组并去除重复元素
+high_array <- unique(high_array)
+print(low_array)
+print(high_array)
+# 从数据集中提取high_array中的行
+high_rows <- data[high_array, ]
+low_rows <- data[low_array, ]
+library(rgl)
+# 绘制3D散点图
+plot3d(data$x, data$y, data$z, col="blue", size=10)
+
+# 红色高频
+points3d(high_rows$x,high_rows$y, high_rows$z, col="red", size=30)
+points3d(low_rows$x,low_rows$y, low_rows$z, col="red", size=30)
+```
+ 
