@@ -1,7 +1,6 @@
 This webpage stores the projects that I have done during my undergraduate
 ## About my self:
 CV: https://maipdf.com/est/a14080205457@pdf <br>
-Academic Transcript (please note that my transcript has been updated in 12/2023): https://maipdf.com/est/a15151202453@pdf <br>
 Certificate: https://maipdf.com/est/d19910289981@pdf <br>
 Some photos:
 
