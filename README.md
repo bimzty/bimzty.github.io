@@ -2,10 +2,11 @@ This webpage stores the projects that I have done during my undergraduate
 ## About my self:
 CV: https://maipdf.com/est/a14080205457@pdf <br>
 Certificate: https://maipdf.com/est/d19910289981@pdf <br>
-Some photos:
+Some photos: https://maifile.cn/est/a65ba089c55e0a/pdf <br>
 
 ## Underway: 
 I am evolving in the research aimed at 'Addressing Class Imbalance Issues in Financial Anti-Fraud Detection with Data Preprocessing and Machine Learning'.<br>
+Specifically, I am now comparing different data augmentation method including GAN and SMOTE, and analyze those algorithms from principle. <br>
 Tutor：Boon Giin Lee https://research.nottingham.edu.cn/en/persons/boon-giin-lee<br>
 This research is expected to publish a research article
 
