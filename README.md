@@ -39,11 +39,11 @@ I extracted more features from the original spatial positions ('X',' Y',' Z') an
 The Bayesian optimization method was also learned and replaced with the Random search method. The Bayesian process for Gaussian Process kernel selection involves iteratively evaluating and updating kernel configurations based on prior beliefs and observed data. It efficiently explores the search space, exploits prior knowledge, and provides uncertainty estimates. This is better than random search because it intelligently guides the search towards promising regions, utilizes past information, builds a surrogate model, and converges to better solutions faster.
  
 #### 1.3.3. Data Augmentation: 
-As generally the residues with high mutation numbers are in the minority, there is an obvious imbalanced distribution of mutations in the dataset. I applied SMOTE (Synthetic Minority Over-sampling Technique) to solve the problem. The detailed program is at 'SMOTE for mutation distribution of the SPIKE protein ', the program could create synthetic samples that lie on the line segments between existing minority class samples, and helps to increase the representation of the minority class and reduce the imbalance in the dataset. The learning curves show this approach can effectively improve the result.
+As generally the residues with high mutation numbers are in the minority, there is an obvious imbalanced distribution of mutations in the dataset. I applied SMOTE (Synthetic Minority Over-sampling Technique) to solve the problem. The detailed program is at 'SMOTE_resample.py', the program could create synthetic samples that lie on the line segments between existing minority class samples, and helps to increase the representation of the minority class and reduce the imbalance in the dataset. I utilized the learning curves show this approach can effectively improve the result.
 
 #### 1.3.4 The original model has an overfitting problem. 
 Best Parameterset for Regularization have been searched and applied. I have approached this by two methods: <br>
-1. selecting a simpler kernel function or reducing the number of hyperparameters <br>
+1. Selecting a simpler kernel function or reducing the number of hyperparameters <br>
 2. Use Bayesian inference to estimate the posterior distribution over the model parameters.
   
 ## 2.Machine Learning Research: Classification task for Freddie Mac loan dataset and Historical Stock Market dataset(05/2022-08/2022, 09/2023)
@@ -56,7 +56,7 @@ I was mainly involved in delivering literature research related to Federated lea
 This research is conducted in a team, and I only demonstrate the program I wrote. Check 2.1 ’Report of Result’ for several results I conducted utilizing models built by myself or other team members.
 
 ### 2.2 Historical Stock Market Dataset
-Data preprocessing: Transformation, cross-sectional standardization <br> Feature Engineering: Feature Extraction: from a financial perspective (Bollinger Bands and waveform-based methods) <br> Feature Attribution： Saliency, Integrated Gradients, and Shapely Value Sampling Methods <br> Feature Selection: Static and dynamic Feature Selection Self-Attention Mechanism<br> Model: LSTM and GRU; Also tried: Linear Regression; Decision Tree; Random Forest; <br> Explore: 1. Add Self-Attention Mechanism in LSTM and GRU model to improve long term memory; 2.Finding features from Neural Networks (using TSNE)
+Check "2.2 ML research for Predicting Stock Market.py". <br>Data preprocessing: Transformation, cross-sectional standardization <br> Feature Engineering: Feature Extraction: from a financial perspective (Bollinger Bands and waveform-based methods) <br> Feature Attribution： Saliency, Integrated Gradients, and Shapely Value Sampling Methods <br> Feature Selection: Static and dynamic Feature Selection Self-Attention Mechanism<br> Model: LSTM and GRU; Also tried: Linear Regression; Decision Tree; Random Forest; <br> Explore: 1. Add Self-Attention Mechanism in LSTM and GRU model to improve long term memory; <br> 2.Visualize features from Neural Networks. (using TSNE)
 
 Check 'study attention mechanism from Google article' for relevant code I produced when learning the article 'Attention Is All You Need' by Ashish Vaswani et, al.
 
@@ -69,13 +69,13 @@ Design a program for the Hans B. Pacejka empirical tire model based on experimen
 
 Hans B. Pacejka model: https://en.wikipedia.org/wiki/Hans_B._Pacejka
  <br>
-The program code: 1. calculate the parameters for the model
+The program code: 1. calculate the parameters for the model<br>
 2. Draw a series of analytical graphs
 
 You can check the 'H.B.Pacejka model_Sample_GUI' MATLAB Figure program alongside the MATLAB GUI of the program. 
 
 ## 4. Competition: Formula Student Electric, won National Third Prize (12/2020-07/2022)
-Responsibility: Data Analyst and Simulation Technician
+Responsibility: Data Analyst and Simulation Technician<br>
 The 'Track Simulation' folder consists of Python codes mainly developed to stimulate racecar performance on Track. It consists of functions for: <br>
 Straight road, when the car accelerates only;<br>
 Corner, when the car runs the maximum speed under the condition;<br>
@@ -86,10 +86,10 @@ Brake, when the car decelerates only;
 ### 5.1 Coursework for the module Machine Learning (12/2023)
 The coursework aims to make use of the machine learning techniques learned in this course to diagnose breast cancer using the Wisconsin Diagnostic Breast Cancer (WDBC) dataset. Based on the recommended model and parameters of a similar competition held by Kaggle, I mainly built 7 models and conducted a systematic approach to choosing the best one from them. 
 
-### 5.2 Coursework for the module Introduction to Scientific Computation
+### 5.2 Coursework for the module Introduction to Scientific Computation (09/2022-05/2023)
 This course aims to introduce the concept of numerical approximation to problems that cannot be solved analytically and to develop skills in Python by implementing numerical methods. Topics included in those works are: Solving nonlinear equations (approximately) using root finding methods and analyzing their convergence; Solving linear systems of equations using direct methods and iterative techniques, including Gaussian elimination and Jacobi & Gauss-Seidel method; Approximating functions by polynomial interpolants (Lagrange polynomials), and analyzing their accuracy; Approximating derivatives and definite integrals using numerical differentiation and integration such as trapezoidal, Simpson & midpoint rule, and analyzing their convergence; Approximating ODEs using numerical methods including Euler’s method and s, higher-order RK methods.
 
-### 5.3 Coursework for the module Statistical Models and Methods
+### 5.3 Coursework for the module Statistical Models and Methods (05/2023))
 The objective of the coursework is to build a predictive model for body fat content using 10 body measurement variables. we first do some exploratory analysis of the data. Secondly, we do model selection to find the best subset of variables for regression based on AIC/BIC, Mallow’s Cp, and Adjusted
 R-squared criterion. Thirdly, we identify and analyze outliers and high-leverage points. Fourthly, we check the linear
 model assumption by plotting the QQ-plot, residual, component residual plot, etc, and do the manipulation to a model
