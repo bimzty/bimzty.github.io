@@ -17,7 +17,7 @@ Position: Data Analyst Intern <br>
 Location: Shenzhen Bay Laboratory. <br>
 tutor: Chaowang https://www.szbl.ac.cn/en/scientificresearch/researchteam/3372.html
 
-I was mainly involved in identifying mutational hotspots and capturing the mutation distribution using the Gaussian Process on the SARS-CoV-2 spike protein.
+I was mainly involved in identifying mutational hotspots and capturing the mutation distribution using the Gaussian process on the SARS-CoV-2 spike protein.
 
 ### Background & Explain
 Mutational Hotspots are the places on the protein where the mutation frequency is higher than in other places, they are the main consideration for designing experiments and vaccines. Furthermore, we would like to capture the regression patterns for this protein, for potential prediction tasks in future research.
@@ -26,19 +26,24 @@ Mutational Hotspots are the places on the protein where the mutation frequency i
 Check the 'Identifying hotspots use WAP method' Rmd file. The idea of the method is from a Comprehensive assessment of cancer missense mutation clustering in protein structures by Atanas Kamburov et, al. The WAP algorithm from this article is first used for identifying clusters that are significant for mutation. I furthermore improve the methods by adding an adaptive step for finding the optimal size of each cluster before the original process.
 
 ### 1.2 Applying K-means or DBSCAN method for identifying hotspots
-Check the 'Identifying hotspots using Clustering method' R file for finding hotspots. Firstly, this method performs Data Preprocessing to transform the spatial position('X',' Y',' Z') of residuals and VirusPercentage to the same scale<br> Secondly, this method examines the data distribution invariant before and after the process. <br>Thirdly, the method uses K-means to cluster different residues. <br>Fourthly, I perform the Permutation methods to examine the significance of mutation frequency for different clusters. <br>Various hypothesis tests have been conducted in this step. We finally utilize T-SNE for dimensionality reduction and visualization.
+Check the 'Identifying hotspots using Clustering method' R file for finding hotspots. Firstly, this method performs Data Preprocessing to transform the spatial position('X',' Y',' Z') of residuals and VirusPercentage to the same scale<br> Secondly, this method examines the data distribution invariant before and after the process. <br>Thirdly, the method uses K-means to cluster different residues. <br>Fourthly, it performs the Permutation methods to examine the significance of mutation frequency for different clusters. <br>Various hypothesis tests have been conducted in this step. We finally utilize T-SNE for dimensionality reduction and visualization.
 
 ### 1.3 Applying the Gaussian process for capturing the mutational distribution of the protein.
-Check the 'Gaussian Process for mutation distribution'. Data processing here includes Log transformation and Box-Cox transformation for 'Mutation Number'. I first implemented the basic GP method with the kernel function using Matern, a generalization of RBF, and using Random Search for the parameters in the kernel function. This basic model gives a tragic result. 
+Check the 'Gaussian process for mutation distribution'. Data processing here includes Log transformation and Box-Cox transformation for 'Mutation Number'. I first implemented the basic GP method with the kernel function using Matern, a generalization of RBF, and using Random search for the parameters in the kernel function. This basic model gives a tragic result. 
 
-I thus improved the model by following methods:
-1.3.1. Feature Engineering: I extracted more features from the original spatial positions ('X',' Y',' Z') and selected them. <br>Feature extraction: from ('X',' Y',' Z') to (x',' y', 'z', 'distance_to_center', 'sum_xyz', 'x^2', 'y^2', 'z^2', 'xy', 'xz', 'yz').<br> Feature attribution: SHAP (Shapley Additive explanations) and Permutation Importance measures are implemented.<br> Feature selection: Correlation-based method and SelectKBest Feature Selection were applied. I finally chose  ‘x’,’ y’, 'x^2',’ xy,’xz’, and ‘‘distance to the center’ as my final features.
+I thus improved the model by following methods:<br>
+#### 1.3.1. Feature Engineering: 
+I extracted more features from the original spatial positions ('X',' Y',' Z') and selected them. <br>Feature extraction: from ('X',' Y',' Z') to (x',' y', 'z', 'distance_to_center', 'sum_xyz', 'x^2', 'y^2', 'z^2', 'xy', 'xz', 'yz').<br> Feature attribution: SHAP (Shapley Additive explanations) and Permutation Importance measures are implemented.<br> Feature selection: Correlation-based method and SelectKBest Feature Selection were applied. I finally chose  ‘x’,’ y’, 'x^2',’ xy,’xz’, and ‘‘distance to the center’ as my final features.
    
-1.3.2. The Bayesian optimization method was also learned and replaced with the Random search method. The Bayesian process for Gaussian Process kernel selection involves iteratively evaluating and updating kernel configurations based on prior beliefs and observed data. It efficiently explores the search space, exploits prior knowledge, and provides uncertainty estimates. This is better than random search because it intelligently guides the search towards promising regions, utilizes past information, builds a surrogate model, and converges to better solutions faster.
+#### 1.3.2. The Bayesian optimization:
+The Bayesian optimization method was also learned and replaced with the Random search method. The Bayesian process for Gaussian Process kernel selection involves iteratively evaluating and updating kernel configurations based on prior beliefs and observed data. It efficiently explores the search space, exploits prior knowledge, and provides uncertainty estimates. This is better than random search because it intelligently guides the search towards promising regions, utilizes past information, builds a surrogate model, and converges to better solutions faster.
  
-1.3.3. Data Augmentation: As generally the residues with high mutation numbers are in the minority, there is an obvious imbalanced distribution of mutations in the dataset. I applied SMOTE (Synthetic Minority Over-sampling Technique) to solve the problem. The detailed program is at 'SMOTE for mutation distribution of the SPIKE protein ', the program could create synthetic samples that lie on the line segments between existing minority class samples, and helps to increase the representation of the minority class and reduce the imbalance in the dataset. The learning curves show this approach can effectively improve the result.
+#### 1.3.3. Data Augmentation: 
+As generally the residues with high mutation numbers are in the minority, there is an obvious imbalanced distribution of mutations in the dataset. I applied SMOTE (Synthetic Minority Over-sampling Technique) to solve the problem. The detailed program is at 'SMOTE for mutation distribution of the SPIKE protein ', the program could create synthetic samples that lie on the line segments between existing minority class samples, and helps to increase the representation of the minority class and reduce the imbalance in the dataset. The learning curves show this approach can effectively improve the result.
 
-1.3.4 The original model has an overfitting problem. Best Parameterset for Regularization have been searched and applied. I have approached this by two methods: 1. selecting a simpler kernel function or reducing the number of hyperparameters <br>
+#### 1.3.4 The original model has an overfitting problem. 
+Best Parameterset for Regularization have been searched and applied. I have approached this by two methods: <br>
+1. selecting a simpler kernel function or reducing the number of hyperparameters <br>
 2. Use Bayesian inference to estimate the posterior distribution over the model parameters.
   
 ## 2.Machine Learning Research: Classification task for Freddie Mac loan dataset and Historical Stock Market dataset(05/2022-08/2022, 09/2023)
