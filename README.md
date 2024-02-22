@@ -1,7 +1,6 @@
 This webpage stores the projects that I have done during my undergraduate
 ## About my self:
 CV: https://maipdf.com/est/a14080205457@pdf <br>
-Certificate: https://maipdf.com/est/d19910289981@pdf <br>
 Some photos: https://maifile.cn/est/a65ba089c55e0a/pdf <br>
 
 ## Underway: 
