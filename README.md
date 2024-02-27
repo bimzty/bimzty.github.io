@@ -9,6 +9,8 @@ I am evolving in the research aimed at 'Addressing Class Imbalance Issues in Fin
 Specifically, I am now comparing different data augmentation method including GAN and SMOTE, and analyze those algorithms from principle. <br>
 Tutor：Boon Giin Lee https://research.nottingham.edu.cn/en/persons/boon-giin-lee<br>
 This research is expected to publish a research article
+<br>
+<br>
 
 
 ## 1.Research for Spike protein on SARS-CoV-2 virus (07/2023-08/2023)
