@@ -1,8 +1,11 @@
 This webpage stores the projects that I have done during my undergraduate
 ## About my self:
+<p align="center">
+  <img src="https://github.com/bimzty/bimzty.github.io/blob/main/Photos/MY%20PHOTO%20II.png" width="400" />
+</p>
 CV: https://maipdf.com/est/a14080205457@pdf <br>
 Certification: https://maipdf.com/est/d17353768550@pdf<br>
-Some photos: https://maifile.cn/est/a65ba089c55e0a/pdf <br>
+My photos: https://maifile.cn/est/a65ba089c55e0a/pdf <br>
 
 ## Underway: 
 I am evolving in the research aimed at 'Addressing Class Imbalance Issues in Financial Anti-Fraud Detection with Data Preprocessing and Machine Learning'.<br>
@@ -65,6 +68,10 @@ This research is conducted in a team, and I only demonstrate the program I wrote
 ### 2.2 Historical Stock Market Dataset
 Check "2.2 ML research for Predicting Stock Market.py". <br>Data preprocessing: Transformation, cross-sectional standardization <br> Feature Engineering: Feature Extraction: from a financial perspective (Bollinger Bands and waveform-based methods) <br> Feature Attribution： Saliency, Integrated Gradients, and Shapely Value Sampling Methods <br> Feature Selection: Static and dynamic Feature Selection Self-Attention Mechanism<br> Model: LSTM and GRU; Also tried: Linear Regression; Decision Tree; Random Forest; <br> Explore: 1. Add Self-Attention Mechanism in LSTM and GRU model to improve long term memory; <br> 2.Visualize features from Neural Networks. (using TSNE)
 
+<p align="center">
+  <img src="https://github.com/bimzty/bimzty.github.io/blob/main/Photos/LSTM%20for%20predicting%20stock%20price.png " width="400" />
+</p>
+
 Check 'study attention mechanism from Google article' for relevant code I produced when learning the article 'Attention Is All You Need' by Ashish Vaswani et, al.
 
 This year, out of interest in Time Series and Quantitive Finance, I have systematically written a more systematic and true-to-life project for this task, which you can see in the folder 'A systematic approach for Quantitive Trading'. Instead of using a neural network, I emphasized the Support Vector Machine this time after being immersed in three related articles I included in that folder. I also utilized MovingAverageCrossStrategy (in '4_mac') for conducting strategy with events in the market being considered.
@@ -81,6 +88,10 @@ Hans B. Pacejka model: https://en.wikipedia.org/wiki/Hans_B._Pacejka
 The program code: 1. calculate the parameters for the model<br>
 2. Draw a series of analytical graphs
 
+<p align="center">
+  <img src=" https://github.com/bimzty/bimzty.github.io/blob/main/Photos/Tire%20Dynamic%20Analysis%20Lateral%20force%20versus%20slip%20angle..png " width="400" />
+</p>
+
 You can check the 'H.B.Pacejka model_Sample_GUI' MATLAB Figure program alongside the MATLAB GUI of the program. 
 ***
 ## 4. Competition: Formula Student Electric, won National Third Prize (12/2020-07/2022)
@@ -89,6 +100,10 @@ The 'Track Simulation' folder consists of Python codes mainly developed to stimu
 Straight road, when the car accelerates only;<br>
 Corner, when the car runs the maximum speed under the condition;<br>
 Brake, when the car decelerates only;
+<p align="center">
+  <img src=" https://github.com/bimzty/bimzty.github.io/blob/main/Photos/Track%20Simulations.png " width="400" />
+</p>
+
 ***
 
 ## 5. Coursework during Undergraduate 
