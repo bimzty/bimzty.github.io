@@ -47,6 +47,8 @@ Best Parameterset for Regularization have been searched and applied. I have appr
 1. Selecting a simpler kernel function or reducing the number of hyperparameters <br>
 2. Use Bayesian inference to estimate the posterior distribution over the model parameters.
   
+***
+
 ## 2.Machine Learning Research: Classification task for Freddie Mac loan dataset and Historical Stock Market dataset(05/2022-08/2022, 09/2023)
 Location: University of Nottingham, Ningbo, china.
 Tutor: Saeid Pourroostaei Ardakani  https://scholar.google.com/citations?user=3OeHr8gAAAAJ
@@ -63,7 +65,9 @@ Check 'study attention mechanism from Google article' for relevant code I produc
 
 This year, out of interest in Time Series and Quantitive Finance, I have systematically written a more systematic and true-to-life project for this task, which you can see in the folder 'A systematic approach for Quantitive Trading'. Instead of using a neural network, I emphasized the Support Vector Machine this time after being immersed in three related articles I included in that folder. I also utilized MovingAverageCrossStrategy (in '4_mac') for conducting strategy with events in the market being considered.
 
- ## 3. Internship: Mathematical modeling intern at ZHONGCE RUBBER GROUP CO., LTD.(06/2022-07/2022)
+***
+
+## 3. Internship: Mathematical modeling intern at ZHONGCE RUBBER GROUP CO., LTD.(06/2022-07/2022)
 
 Worked as a Mathematical Modelling intern
 Design a program for the Hans B. Pacejka empirical tire model based on experimental data.
@@ -74,14 +78,14 @@ The program code: 1. calculate the parameters for the model<br>
 2. Draw a series of analytical graphs
 
 You can check the 'H.B.Pacejka model_Sample_GUI' MATLAB Figure program alongside the MATLAB GUI of the program. 
-
+***
 ## 4. Competition: Formula Student Electric, won National Third Prize (12/2020-07/2022)
 Responsibility: Data Analyst and Simulation Technician<br>
 The 'Track Simulation' folder consists of Python codes mainly developed to stimulate racecar performance on Track. It consists of functions for: <br>
 Straight road, when the car accelerates only;<br>
 Corner, when the car runs the maximum speed under the condition;<br>
 Brake, when the car decelerates only;
-
+***
 
 ## 5. Coursework during Undergraduate 
 ### 5.1 Coursework for the module Machine Learning (12/2023)
