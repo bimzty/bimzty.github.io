@@ -38,9 +38,7 @@ Check the 'Gaussian process for mutation distribution'. Data processing here inc
 I thus improved the model by following methods:<br>
 #### 1.3.1. Feature Engineering: 
 I extracted more features from the original spatial positions ('X',' Y',' Z') and selected them. <br>Feature extraction: from ('X',' Y',' Z') to (x',' y', 'z', 'distance_to_center', 'sum_xyz', 'x^2', 'y^2', 'z^2', 'xy', 'xz', 'yz').<br> Feature attribution: SHAP (Shapley Additive explanations) and Permutation Importance measures are implemented.<br> Feature selection: Correlation-based method and SelectKBest Feature Selection were applied. I finally chose  ‘x’,’ y’, 'x^2',’ xy,’xz’, and ‘‘distance to the center’ as my final features.<br>
-<p align="center">
-  <img src="https://github.com/bimzty/bimzty.github.io/blob/main/Photos/Feature%20Importance.png" width="400" />
-</p>
+
 
    
 #### 1.3.2. The Bayesian optimization:
@@ -48,6 +46,15 @@ The Bayesian optimization method was also learned and replaced with the Random s
  
 #### 1.3.3. Data Augmentation: 
 As generally the residues with high mutation numbers are in the minority, there is an obvious imbalanced distribution of mutations in the dataset. I applied SMOTE (Synthetic Minority Over-sampling Technique) to solve the problem. The detailed program is at 'SMOTE_resample.py', the program could create synthetic samples that lie on the line segments between existing minority class samples, and helps to increase the representation of the minority class and reduce the imbalance in the dataset. I utilized the learning curves show this approach can effectively improve the result.
+
+<p align="center">
+  <img src="https://github.com/bimzty/bimzty.github.io/blob/main/Photos/GP%20without%20Augmentation.png" width="400" />
+  <img src="https://github.com/bimzty/bimzty.github.io/blob/main/Photos/GP%20woth%20Augmentation.png" width="400" />
+</p>
+<p align="center">
+  <em>Result without Data Augmentation</em>
+  <em>Result with Data Augmentation</em>
+</p>
 
 #### 1.3.4 The original model has an overfitting problem. 
 Best Parameterset for Regularization have been searched and applied. I have approached this by two methods: <br>
