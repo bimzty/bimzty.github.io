@@ -5,7 +5,7 @@ This webpage stores the projects that I have done during my undergraduate
 </p>
 CV: https://maipdf.com/est/a14080205457@pdf <br>
 Certification: https://maipdf.com/est/d17353768550@pdf<br>
-My photos: https://maifile.cn/est/a65ba089c55e0a/pdf <br>
+My photos: https://maifile.cn/est/d65df34e842643/pdf <br>
 
 ## Underway: 
 I am evolving in the research aimed at 'Addressing Class Imbalance Issues in Financial Anti-Fraud Detection with Data Preprocessing and Machine Learning'.<br>
