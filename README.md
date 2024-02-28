@@ -102,7 +102,7 @@ The program code: 1. calculate the parameters for the model<br>
   <img src="https://github.com/bimzty/bimzty.github.io/blob/main/Photos/Tire%20Dynamic%20Analysis%20Lateral%20force%20versus%20slip%20angle..png" width="300" />
 </p>
 <p align="center">
- <em>Tire Dynamic Analysis：Tire lateral force versus slip angle.</em>
+ <em>Tire Dynamic Analysis：Tire lateral force versus slip angle</em>
 </p>
 
 You can check the 'H.B.Pacejka model_Sample_GUI' MATLAB Figure program alongside the MATLAB GUI of the program. 
@@ -113,10 +113,13 @@ The 'Track Simulation' folder consists of Python codes mainly developed to stimu
 Straight road, when the car accelerates only;<br>
 Corner, when the car runs the maximum speed under the condition;<br>
 Brake, when the car decelerates only;
-<p align="center">
-  <img src=" https://github.com/bimzty/bimzty.github.io/blob/main/Photos/Track%20Simulations.png " width="400" />
-</p>
 
+<p align="center">
+  <img src="https://github.com/bimzty/bimzty.github.io/blob/main/Photos/Track%20Simulations.png" width="300" />
+</p>
+<p align="center">
+ <em>Car performance simulation on one track</em>
+</p>
 ***
 
 ## 5. Coursework during Undergraduate 
