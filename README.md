@@ -78,6 +78,9 @@ Check "2.2 ML research for Predicting Stock Market.py". <br>Data preprocessing: 
 <p align="center">
   <img src="https://github.com/bimzty/bimzty.github.io/blob/main/Photos/LSTM%20for%20predicting%20stock%20price.png " width="400" />
 </p>
+<p align="center">
+  <em>Price Prediction using LSTM model</em>
+</p>
 
 Check 'study attention mechanism from Google article' for relevant code I produced when learning the article 'Attention Is All You Need' by Ashish Vaswani et, al.
 
@@ -96,7 +99,10 @@ The program code: 1. calculate the parameters for the model<br>
 2. Draw a series of analytical graphs
 
 <p align="center">
-  <img src=" https://github.com/bimzty/bimzty.github.io/blob/main/Photos/Tire%20Dynamic%20Analysis%20Lateral%20force%20versus%20slip%20angle..png " width="400" />
+  <img src="https://github.com/bimzty/bimzty.github.io/blob/main/Photos/Tire%20Dynamic%20Analysis%20Lateral%20force%20versus%20slip%20angle..png" width="300" />
+</p>
+<p align="center">
+ <em>Tire Dynamic Analysis：Tire lateral force versus slip angle.</em>
 </p>
 
 You can check the 'H.B.Pacejka model_Sample_GUI' MATLAB Figure program alongside the MATLAB GUI of the program. 
