@@ -47,21 +47,13 @@ The Bayesian optimization method was also learned and replaced with the Random s
 #### 1.3.3. Data Augmentation: 
 As generally the residues with high mutation numbers are in the minority, there is an obvious imbalanced distribution of mutations in the dataset. I applied SMOTE (Synthetic Minority Over-sampling Technique) to solve the problem. The detailed program is at 'SMOTE_resample.py', the program could create synthetic samples that lie on the line segments between existing minority class samples, and helps to increase the representation of the minority class and reduce the imbalance in the dataset. I utilized the learning curves show this approach can effectively improve the result.
 
-<p align="center">
-  <img src="https://github.com/bimzty/bimzty.github.io/blob/main/Photos/GP%20without%20Augmentation.png" width="400" />
-  <img src="https://github.com/bimzty/bimzty.github.io/blob/main/Photos/GP%20woth%20Augmentation.png" width="400" />
-</p>
-<p align="center">
-  <em>Result without Data Augmentation</em>
-  <em>Result with Data Augmentation</em>
-</p>
 
 <p align="center">
   <img src="https://github.com/bimzty/bimzty.github.io/blob/main/Photos/GP%20without%20Augmentation.png" width="400" />
   <img src="https://github.com/bimzty/bimzty.github.io/blob/main/Photos/GP%20woth%20Augmentation.png" width="400" />
 </p>
 <p align="center">
-  <em>The difference of regression value and real value when without augmentation</em> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>With augmentation</em>
+  <em>The difference of regression value and real value when without augmentation (left) and with augmentation</em>
 </p>
 
 #### 1.3.4 The original model has an overfitting problem. 
