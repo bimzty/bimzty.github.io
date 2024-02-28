@@ -29,6 +29,13 @@ Mutational Hotspots are the places on the protein where the mutation frequency i
 ### 1.1 Applying a weighted average proximity scoring function for identifying hotspots
 Check the 'Identifying hotspots use WAP method' Rmd file. The idea of the method is from a Comprehensive assessment of cancer missense mutation clustering in protein structures by Atanas Kamburov et, al. The WAP algorithm from this article is first used for identifying clusters that are significant for mutation. I furthermore improve the methods by adding an adaptive step for finding the optimal size of each cluster before the original process.
 
+<p align="center">
+  <img src="https://github.com/bimzty/bimzty.github.io/blob/main/Photos/WAP.png " width="400" />
+</p>
+<p align="center">
+  <em>weighted average proximity function, consider mutation frqency between a pair of residues (N<sub>q</sub> and N<sub>r</sub>) and distance between residues</em>
+</p>
+
 ### 1.2 Applying K-means or DBSCAN method for identifying hotspots
 Check the 'Identifying hotspots using Clustering method' R file for finding hotspots. Firstly, this method performs Data Preprocessing to transform the spatial position('X',' Y',' Z') of residuals and VirusPercentage to the same scale<br> Secondly, this method examines the data distribution invariant before and after the process. <br>Thirdly, the method uses K-means to cluster different residues. <br>Fourthly, it performs the Permutation methods to examine the significance of mutation frequency for different clusters. <br>Various hypothesis tests have been conducted in this step. We finally utilize T-SNE for dimensionality reduction and visualization.
 
@@ -120,6 +127,7 @@ Brake, when the car decelerates only;
 <p align="center">
  <em>Car performance simulation on one track</em>
 </p>
+
 ***
 
 ## 5. Coursework during Undergraduate 
