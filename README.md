@@ -33,11 +33,18 @@ Check the 'Identifying hotspots use WAP method' Rmd file. The idea of the method
   <img src="https://github.com/bimzty/bimzty.github.io/blob/main/Photos/WAP.png " width="400" />
 </p>
 <p align="center">
-  <em>weighted average proximity function, consider mutation frqency between a pair of residues (N<sub>q</sub> and N<sub>r</sub>) and distance between residues</em>
+  <em>weighted average proximity function, consider mutation frqency between a pair of residues (N<sub>q</sub> and N<sub>r</sub>) and distance between residues (the exponential term)</em>
 </p>
 
 ### 1.2 Applying K-means or DBSCAN method for identifying hotspots
 Check the 'Identifying hotspots using Clustering method' R file for finding hotspots. Firstly, this method performs Data Preprocessing to transform the spatial position('X',' Y',' Z') of residuals and VirusPercentage to the same scale<br> Secondly, this method examines the data distribution invariant before and after the process. <br>Thirdly, the method uses K-means to cluster different residues. <br>Fourthly, it performs the Permutation methods to examine the significance of mutation frequency for different clusters. <br>Various hypothesis tests have been conducted in this step. We finally utilize T-SNE for dimensionality reduction and visualization.
+
+<p align="center">
+  <img src="https://github.com/bimzty/bimzty.github.io/blob/main/Photos/Hotspots.png " width="400" />
+</p>
+<p align="center">
+  <em>The hotspots in the spike protein</em>
+</p>
 
 ### 1.3 Applying the Gaussian process for capturing the mutational distribution of the protein.
 Check the 'Gaussian process for mutation distribution'. Data processing here includes Log transformation and Box-Cox transformation for 'Mutation Number'. I first implemented the basic GP method with the kernel function using Matern, a generalization of RBF, and using Random search for the parameters in the kernel function. This basic model gives a tragic result. 
