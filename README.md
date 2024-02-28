@@ -56,6 +56,14 @@ As generally the residues with high mutation numbers are in the minority, there 
   <em>Result with Data Augmentation</em>
 </p>
 
+<p align="center">
+  <img src="https://github.com/bimzty/bimzty.github.io/blob/main/Photos/GP%20without%20Augmentation.png" width="400" />
+  <img src="https://github.com/bimzty/bimzty.github.io/blob/main/Photos/GP%20woth%20Augmentation.png" width="400" />
+</p>
+<p align="center">
+  <em>The difference of regression value and real value when without augmentation</em> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>With augmentation</em>
+</p>
+
 #### 1.3.4 The original model has an overfitting problem. 
 Best Parameterset for Regularization have been searched and applied. I have approached this by two methods: <br>
 1. Selecting a simpler kernel function or reducing the number of hyperparameters <br>
