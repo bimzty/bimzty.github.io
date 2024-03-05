@@ -78,7 +78,7 @@ Best Parameterset for Regularization have been searched and applied. I have appr
 ***
 
 ## 2.Machine Learning Research: Classification task for Freddie Mac loan dataset and Historical Stock Market dataset(05/2022-08/2022, 09/2023)
-Location: University of Nottingham, Ningbo, china.
+Location: University of Nottingham, Ningbo, china.<br>
 Tutor: Saeid Pourroostaei Ardakani  https://scholar.google.com/citations?user=3OeHr8gAAAAJ
 
 I was mainly involved in delivering literature research related to Federated learning, implemented Feature Engineering, and built and compared multiple models in both tasks.
