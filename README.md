@@ -36,8 +36,8 @@ Check the 'Identifying hotspots using the WAP method' Rmd file. The idea for the
   <em>weighted average proximity function, consider mutation frequency between a pair of residues (N<sub>q</sub> and N<sub>r</sub>) and distance between residues (the exponential term)</em>
 </p>
 
-### 1.2 Applying K-means or DBSCAN method for identifying hotspots
-Check the 'Identifying hotspots using Clustering method' R file for finding hotspots. Firstly, this method performs Data Preprocessing to transform the spatial position('X',' Y',' Z') of residuals and VirusPercentage to the same scale<br> Secondly, this method examines the data distribution invariant before and after the process. <br>Thirdly, the method uses K-means to cluster different residues. <br>Fourthly, it performs the Permutation methods to examine the significance of mutation frequency for different clusters. <br>Various hypothesis tests have been conducted in this step. We finally utilize T-SNE for dimensionality reduction and visualization.
+### 1.2 Applying K-means or DBSCAN method for identifying hotspots (collaborated with a colleague)
+Check the 'Identifying hotspots using Clustering method' R file for finding hotspots. Firstly, this method performs Data Preprocessing to transform the spatial position('X',' Y',' Z') of residuals and VirusPercentage to the same scale<br> Secondly, this method examines the data distribution invariant before and after the process. <br>Thirdly, the method uses K-means to cluster different residues. <br>Fourthly, it performs the Permutation methods to examine the significance of mutation frequency for different clusters. <br>Various hypothesis tests have been conducted in this step. We finally utilize T-SNE for dimensionality reduction and visualization. 
 
 <p align="center">
   <img src="https://github.com/bimzty/bimzty.github.io/blob/main/Photos/Hotspots.png " width="400" />
@@ -59,7 +59,7 @@ I extracted more features from the original spatial positions ('X',' Y',' Z') an
 The Bayesian optimization method was also learned and replaced with the Random search method. The Bayesian process for Gaussian Process kernel selection involves iteratively evaluating and updating kernel configurations based on prior beliefs and observed data. It efficiently explores the search space, exploits prior knowledge, and provides uncertainty estimates. This is better than random search because it intelligently guides the search towards promising regions, utilizes past information, builds a surrogate model, and converges to better solutions faster.
  
 #### 1.3.3. Data Augmentation: 
-As generally the residues with high mutation numbers are in the minority, there is an obvious imbalanced distribution of mutations in the dataset. I applied SMOTE (Synthetic Minority Over-sampling Technique) to solve the problem. The detailed program is at 'SMOTE_resample.py', the program could create synthetic samples that lie on the line segments between existing minority class samples, and helps to increase the representation of the minority class and reduce the imbalance in the dataset. I utilized the learning curves to show this approach can effectively improve the result.
+As generally the residues with high mutation numbers are in the minority, there is an obvious imbalanced distribution of mutations in the dataset. I applied SMOTE (Synthetic Minority Over-sampling Technique) to solve the problem. The detailed program is at 'SMOTE_resample.py', the program could create synthetic samples that lie on the line segments between existing minority class samples, and help to increase the representation of the minority class and reduce the imbalance in the dataset. I utilized the learning curves to show this approach can effectively improve the result.
 
 
 <p align="center">
@@ -87,7 +87,7 @@ I was mainly involved in delivering literature research related to Federated lea
 This research is conducted in a team, and I only demonstrate the program I wrote. Check 2.1 ’Report of Result’ for several results I conducted utilizing models built by myself or other team members.
 
 ### 2.2 Historical Stock Market Dataset
-Check "2.2 ML research for Predicting Stock Market.py". <br>Data preprocessing: Transformation, cross-sectional standardization <br> Feature Engineering: Feature Extraction: from a financial perspective (Bollinger Bands and waveform-based methods) <br> Feature Attribution： Saliency, Integrated Gradients, and Shapely Value Sampling Methods <br> Feature Selection: Static and dynamic Feature Selection Self-Attention Mechanism<br> Model: LSTM and GRU; Also tried: Linear Regression; Decision Tree; Random Forest; <br> Explore: 1. Add Self-Attention Mechanism in LSTM and GRU model to improve long term memory; <br> 2.Visualize features from Neural Networks. (using TSNE)
+Check "2.2 ML research for Predicting Stock Market.py". <br>Data preprocessing: Transformation, cross-sectional standardization <br> Feature Engineering: Feature Extraction: from a financial perspective (Bollinger Bands and waveform-based methods) <br> Feature Attribution： Saliency, Integrated Gradients, and Shapely Value Sampling Methods <br> Feature Selection: Static and dynamic Feature Selection Self-Attention Mechanism<br> Model: LSTM and GRU; Also tried: Linear Regression; Decision Tree; Random Forest; <br> Explore: 1. Add Self-Attention Mechanism in LSTM and GRU model to improve long term memory; <br> 2. Visualize features from Neural Networks. (using TSNE)
 
 <p align="center">
   <img src="https://github.com/bimzty/bimzty.github.io/blob/main/Photos/LSTM%20for%20predicting%20stock%20price.png " width="400" />
@@ -98,14 +98,14 @@ Check "2.2 ML research for Predicting Stock Market.py". <br>Data preprocessing: 
 
 Check 'study attention mechanism from Google article' for relevant code I produced when learning the article 'Attention Is All You Need' by Ashish Vaswani et, al.
 
-This year, out of interest in Time Series and Quantitive Finance, I have systematically written a more systematic and true-to-life project for this task, which you can see in the folder 'A systematic approach for Quantitive Trading'. Instead of using a neural network, I emphasized the Support Vector Machine this time after being immersed in three related articles I included in that folder. I also utilized MovingAverageCrossStrategy (in '4_mac') for conducting strategy with events in the market being considered.
+This year, out of interest in Time Series and Quantitive Finance, I have systematically written a more systematic and true-to-life project for this task, which you can see in the folder 'A systematic approach for Quantitive Trading' (collaborated). Instead of using a neural network, I emphasized the Support Vector Machine this time after being immersed in three related articles I included in that folder. I also utilized MovingAverageCrossStrategy (in '4_mac') for conducting strategy with events in the market being considered.
 
 ***
 
 ## 3. Internship: Mathematical modeling intern at ZHONGCE RUBBER GROUP CO., LTD.(06/2022-07/2022)
 
 Worked as a Mathematical Modelling intern
-Design a program for the Hans B. Pacejka empirical tire model based on experimental data.
+Design a program for the Hans B. Pacejka empirical tire model based on experimental data. (collaborated with colleague)
 
 Hans B. Pacejka model: https://en.wikipedia.org/wiki/Hans_B._Pacejka
  <br>
@@ -123,7 +123,7 @@ You can check the 'H.B.Pacejka model_Sample_GUI' MATLAB Figure program alongside
 ***
 ## 4. Competition: Formula Student Electric, won National Third Prize (12/2020-07/2022)
 Responsibility: Data Analyst and Simulation Technician<br>
-The 'Track Simulation' folder consists of Python codes mainly developed to stimulate racecar performance on Track. It consists of functions for: <br>
+The 'Track Simulation' folder consists of Python codes (collaborated with a colleague) mainly developed to stimulate racecar performance on Track. It consists of functions for: <br>
 Straight road, when the car accelerates only;<br>
 Corner, when the car runs the maximum speed under the condition;<br>
 Brake, when the car decelerates only;
