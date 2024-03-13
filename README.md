@@ -13,7 +13,7 @@ Specifically, I am now comparing different data augmentation methods including G
 Tutor：Boon Giin Lee (World top2% Scientist) https://research.nottingham.edu.cn/en/persons/boon-giin-lee<br>
 This research is expected to publish a research article.
 
-2. I am studying two certified online courses related to Data Science provided by the University of California, Santa Cruz. They are Relational Database Design and SQL Programming (https://www.ucsc-extension.edu/courses/relational-database-design-and-sql-programming/) and Java Programming I (https://extendedstudies.ucsd.edu/). My ability will be officially tested through coursework and exams and certified by UCSC. Each of these courses has 3 units of credit in the US system.
+2. I am studying two certified online courses related to Data Science. They are Introduction to Databases (https://extension.berkeley.edu/search/publicCourseSearchDetails.do?method=load&courseId=40645) by UC Berkley and Java Programming I (https://www.ucsc-extension.edu/courses/java-programming-i/) by UC Santa Cruz. My ability will be officially tested through coursework and exams and certified by UCSC. Each of these courses has 3 units of credit in the US system.
 
 ***
 
