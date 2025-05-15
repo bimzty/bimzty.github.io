@@ -1,0 +1,128 @@
+DROP SEQUENCE subdivision_id_seq;
+DROP SEQUENCE district_id_seq;
+DROP SEQUENCE lot_id_seq;
+-- DROP SEQUENCE elevation_seq;
+-- DROP SEQUENCE room_seq;
+DROP SEQUENCE escrow_id_seq;
+DROP SEQUENCE customer_id_seq;
+DROP SEQUENCE bank_id_seq;
+DROP SEQUENCE employee_id_seq;
+DROP SEQUENCE license_no_seq;
+DROP SEQUENCE crew_no_seq;
+DROP SEQUENCE construction_project_id_seq;
+DROP SEQUENCE option_id_seq;
+DROP SEQUENCE dchoice_id_seq;
+DROP SEQUENCE schoice_id_seq;
+DROP SEQUENCE invoice_id_seq;
+
+CREATE SEQUENCE subdivision_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    MINVALUE 1
+    MAXVALUE 9999
+    NOCYCLE;
+
+CREATE SEQUENCE district_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    MINVALUE 1
+    MAXVALUE 9999
+    NOCYCLE;
+
+CREATE SEQUENCE lot_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    MINVALUE 1
+    MAXVALUE 9999
+    NOCYCLE;
+
+-- CREATE SEQUENCE elevation_seq
+--     START WITH 0
+--     INCREMENT BY 1
+--     MINVALUE 0
+--     MAXVALUE 9999
+--     CYCLE;
+
+-- CREATE SEQUENCE room_seq
+--     START WITH 1
+--     INCREMENT BY 1
+--     MINVALUE 1
+--     MAXVALUE 9999
+--     CYCLE;
+
+CREATE SEQUENCE escrow_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    MINVALUE 1
+    MAXVALUE 9999
+    NOCYCLE;
+
+CREATE SEQUENCE customer_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    MINVALUE 1
+    MAXVALUE 9999
+    NOCYCLE;
+
+CREATE SEQUENCE bank_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    MINVALUE 1
+    MAXVALUE 9999
+    NOCYCLE;
+
+CREATE SEQUENCE employee_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    MINVALUE 1
+    MAXVALUE 9999
+    NOCYCLE;
+
+CREATE SEQUENCE license_no_seq
+    START WITH 1
+    INCREMENT BY 1
+    MINVALUE 1
+    MAXVALUE 9999
+    NOCYCLE;
+
+CREATE SEQUENCE crew_no_seq
+    START WITH 1
+    INCREMENT BY 1
+    MINVALUE 1
+    MAXVALUE 9999
+    NOCYCLE;
+
+CREATE SEQUENCE construction_project_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    MINVALUE 1
+    MAXVALUE 9999
+    NOCYCLE;
+
+CREATE SEQUENCE option_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    MINVALUE 1
+    MAXVALUE 9999
+    NOCYCLE;
+
+CREATE SEQUENCE dchoice_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    MINVALUE 1
+    MAXVALUE 9999
+    NOCYCLE;
+
+CREATE SEQUENCE schoice_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    MINVALUE 1
+    MAXVALUE 9999
+    NOCYCLE;
+
+CREATE SEQUENCE invoice_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    MINVALUE 1
+    MAXVALUE 9999
+    NOCYCLE;
