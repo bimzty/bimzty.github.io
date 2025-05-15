@@ -7,13 +7,11 @@ This webpage stores the projects that I have done during my undergraduate
 Certification: https://maipdf.com/est/d17353768550@pdf<br>
 My photos: https://maifile.cn/est/d65df34e842643/pdf <be>
 
-## Research & Learning Underway: 
+## Research underway: 
 1. I am evolving in the research aimed at 'Addressing Class Imbalance Issues in Financial Anti-Fraud Detection with Data Preprocessing and Machine Learning'.<br>
 Specifically, I am now comparing different data augmentation methods including GAN and SMOTE, and analyzing those algorithms in principle. <br>
 Tutor：Boon Giin Lee (World top2% Scientist) https://research.nottingham.edu.cn/en/persons/boon-giin-lee<br>
 This research is expected to publish a research article.
-
-2. I am studying two certified online courses related to Data Science. They are Introduction to Databases (https://extension.berkeley.edu/search/publicCourseSearchDetails.do?method=load&courseId=40645) by UC Berkley and Java Programming I (https://www.ucsc-extension.edu/courses/java-programming-i/) by UC Santa Cruz. My ability will be officially tested through coursework and exams and certified by UCSC. Each of these courses has 3 units of credit in the US system.
 
 ***
 
