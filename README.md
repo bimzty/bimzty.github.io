@@ -28,7 +28,7 @@ Main final result is the reduced MSE of 17%, improved interpretability of the mo
 
 Alongside with this project, I also productionized ETL pipelines to handle 1M+ global pandemic records sourced from 27 heterogeneous biological databases, utilizing Apache Spark for scalable job scheduling and dataflow optimization. Furthermroe used Docker to streamline deployment and support CI/CD integration for a real-time Tableau dashboard of for researchers.
 
-As the final deployment of code is collborating with my teammates in another repository, I only demonstrate some initial coding of the project main related to Gaussian Process in the file that is fully developed by me.
+As the final deployment of code is collborating with my teammates in another repository, I only demonstrate some initial coding related to Gaussian Process (mainly in the file Gaussian Process xxx.py) and hotspot indentification (the file Hotspots by kmeans method, which has not been selected for the final deployment) in the file that is fully developed by me. 
 
 ### 2.2 Algorithm design for locating **infectious hotspots**
 Designed an algorithm for locating **infectious hotspots**, combining the following statistical and spatial methods:
