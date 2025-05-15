@@ -1,4 +1,4 @@
-This webpage stores the projects that I have done during my undergraduate
+This webpage stores some projects that I have done.
 ## About my self:
 <p align="center">
   <img src="https://github.com/bimzty/bimzty.github.io/blob/main/Photos/MY%20PHOTO%20II.png" width="400" />
@@ -7,13 +7,23 @@ This webpage stores the projects that I have done during my undergraduate
 Certification: https://maipdf.com/est/d17353768550@pdf<br>
 My photos: https://maifile.cn/est/d65df34e842643/pdf <be>
 
-## Research underway: 
+***
+
+# Project during Graduate at CMU
+
+## 1. A real database project for a construction company
+
+
+## 2. Data Science course project
+
+***
+
+# Project during Undergraduate
+
 1. I am evolving in the research aimed at 'Addressing Class Imbalance Issues in Financial Anti-Fraud Detection with Data Preprocessing and Machine Learning'.<br>
 Specifically, I am now comparing different data augmentation methods including GAN and SMOTE, and analyzing those algorithms in principle. <br>
 Tutor：Boon Giin Lee (World top2% Scientist) https://research.nottingham.edu.cn/en/persons/boon-giin-lee<br>
 This research is expected to publish a research article.
-
-***
 
 ## 2. Research for Spike protein on SARS-CoV-2 virus (07/2023-08/2023)
 
